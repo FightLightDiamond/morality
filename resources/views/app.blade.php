@@ -13,6 +13,6 @@
 
 @inertia
 
-<div id="my-app"></div>
+<div id="app"></div>
 </body>
 </html>
