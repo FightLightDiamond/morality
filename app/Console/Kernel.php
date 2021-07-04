@@ -2,9 +2,12 @@
 
 namespace App\Console;
 
+use App\Console\Commands\RockPaperScissorsCommand;
+use App\Console\Commands\SendPrivateMessageCommand;
+use App\Console\Commands\SendRoomMessageCommand;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
-use App\Console\Commands\SendChatMessage;
+use App\Console\Commands\SendPublicMessageCommand;
 
 class Kernel extends ConsoleKernel
 {
@@ -14,7 +17,10 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-	    SendChatMessage::class
+    	SendPrivateMessageCommand::class,
+	    SendPublicMessageCommand::class,
+	    SendRoomMessageCommand::class,
+	    RockPaperScissorsCommand::class,
     ];
 
     /**

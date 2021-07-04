@@ -2,8 +2,6 @@
 
 namespace App\Events;
 
-use App\Models\Message;
-use App\Models\User;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -12,7 +10,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class MessagePosted implements ShouldBroadcast
+class RockPaperScissorsEvent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -21,15 +19,10 @@ class MessagePosted implements ShouldBroadcast
      *
      * @return void
      */
-    public Message $message;
-    public User $user;
-
-    public function __construct(Message $message, User $user)
+    public function __construct()
     {
-        $this->message = $message;
-        $this->user = $user;
+        //
     }
-
 
     /**
      * Get the channels the event should broadcast on.
@@ -38,10 +31,6 @@ class MessagePosted implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return ['chatroom'];
-    }
-
-    public function broadcastAs() {
-        return 'message_send';
+        return new PrivateChannel('channel-name');
     }
 }

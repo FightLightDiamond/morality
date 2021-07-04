@@ -1,6 +1,6 @@
 import Echo from "laravel-echo"
 
-const EchoApp = new Echo({
+window.EchoApp = new Echo({
     broadcaster: 'socket.io',
     host: window.location.hostname + ':6001'
 });
@@ -10,3 +10,33 @@ EchoApp.channel('laravel_database_chatroom')
         console.log(res)
         alert(res.message.message)
     })
+
+EchoApp.channel('message')
+    .listen('.sent', (res) => {
+        console.log(res)
+        alert('chatroom' + res.message.message)
+    })
+
+if(userId) {
+    EchoApp.private(`message.${userId}`)
+        .listen('.sent', (e) => {
+            alert(12355)
+            console.log(e.order);
+        });
+}
+
+EchoApp.join(`message.${roomId}`)
+    .here((users) => {
+        //
+    })
+    .joining((user) => {
+        console.log(user.name);
+    })
+    .leaving((user) => {
+        console.log(user.name);
+    })
+    .error((error) => {
+        console.error(error);
+    }).listen('.sent', (e) => {
+        alert("ROOM")
+    });

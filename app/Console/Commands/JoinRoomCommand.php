@@ -2,18 +2,16 @@
 
 namespace App\Console\Commands;
 
-use App\Events\PrivateMessageSent;
-use App\Models\User;
 use Illuminate\Console\Command;
 
-class SendPrivateMessage extends Command
+class JoinRoomCommand extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'chat:private {id}';
+    protected $signature = 'command:name';
 
     /**
      * The console command description.
@@ -39,7 +37,6 @@ class SendPrivateMessage extends Command
      */
     public function handle()
     {
-        $user = User::find($this->argument('id'));
-        event(new PrivateMessageSent($user));
+        return 0;
     }
 }

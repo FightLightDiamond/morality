@@ -2,7 +2,6 @@
 
 namespace App\Events;
 
-use App\Models\User;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -11,23 +10,18 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class PrivateMessageSent implements ShouldBroadcast
+class JoinRoomEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     /**
-     * @var User
-     */
-    private User $user;
-
-    /**
      * Create a new event instance.
      *
-     * @param User $user
+     * @return void
      */
-    public function __construct(User $user)
+    public function __construct()
     {
-        $this->user = $user;
+        //
     }
 
     /**
@@ -37,16 +31,16 @@ class PrivateMessageSent implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        info(__CLASS__ . ':' . $this->user->id);
-        return new PrivateChannel('private-message.'.$this->user->id);
+        return new PresenceChannel('room');
     }
 
-    /**
-     * Get the channels the event should broadcast on.
-     *
-     * @return string
-     */
-    public function broadcastAs() {
-        return 'sent';
-    }
+	/**
+	 * Get the channels the event should broadcast on.
+	 *
+	 * @return string
+	 */
+	public function broadcastAs()
+	{
+		return 'join';
+	}
 }

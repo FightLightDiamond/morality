@@ -2,19 +2,17 @@
 
 namespace App\Events;
 
-use App\Models\QuestionComment;
+use App\Models\Message;
+use App\Models\User;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Broadcasting\PresenceChannel;
+use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-/**
- * Class QuestionCommentSent
- * @package App\Events
- */
-class QuestionCommentSent implements ShouldBroadcast
+class SendPublicMessageEvent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -23,31 +21,26 @@ class QuestionCommentSent implements ShouldBroadcast
      *
      * @return void
      */
-    public QuestionComment $comment;
-    public Authenticatable $user;
+    public Message $message;
+    public User $user;
 
-    public function __construct(QuestionComment $comment, Authenticatable $user)
+    public function __construct(Message $message, User $user)
     {
-        $this->comment = $comment;
+        $this->message = $message;
         $this->user = $user;
     }
 
     /**
      * Get the channels the event should broadcast on.
      *
-     * @return Channel|array
+     * @return \Illuminate\Broadcasting\Channel|array
      */
     public function broadcastOn()
     {
-        return ['question_comment'];
+        return ['message'];
     }
 
-    /**
-     * Get the channels the event should broadcast on.
-     *
-     * @return string
-     */
     public function broadcastAs() {
-        return 'question_comment_sent';
+        return 'sent';
     }
 }

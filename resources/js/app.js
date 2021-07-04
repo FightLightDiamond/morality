@@ -15,6 +15,8 @@ require('./bootstrap');
 // require('./components/Example');
 
 
+require('./echo')
+
 import React from 'react'
 import {render} from 'react-dom'
 import {createInertiaApp, InertiaApp} from '@inertiajs/inertia-react'
