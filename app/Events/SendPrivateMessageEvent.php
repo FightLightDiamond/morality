@@ -16,6 +16,7 @@ use Illuminate\Queue\SerializesModels;
 class SendPrivateMessageEvent implements ShouldBroadcast
 {
 	use Dispatchable, InteractsWithSockets, SerializesModels;
+	const CHANNEL = 'message.';
 
 	/**
 	 * Create a new event instance.
@@ -38,7 +39,7 @@ class SendPrivateMessageEvent implements ShouldBroadcast
 	 */
 	public function broadcastOn()
 	{
-		return new PrivateChannel('message.' . $this->user->id);
+		return new PrivateChannel(self::CHANNEL . $this->user->id);
 	}
 
 	/**

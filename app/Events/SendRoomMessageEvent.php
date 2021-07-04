@@ -17,6 +17,8 @@ class SendRoomMessageEvent implements ShouldBroadcast
 {
 	use Dispatchable, InteractsWithSockets, SerializesModels;
 
+	const CHANNEL = 'room_message.';
+
 	/**
 	 * Create a new event instance.
 	 *
@@ -38,7 +40,7 @@ class SendRoomMessageEvent implements ShouldBroadcast
 	 */
 	public function broadcastOn()
 	{
-		return new PresenceChannel('message.' . $this->message->room_id);
+		return new PresenceChannel(self::CHANNEL . $this->message->room_id);
 	}
 
 	/**

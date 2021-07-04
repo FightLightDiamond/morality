@@ -16,7 +16,7 @@
     @routes
 </head>
 <body>
-    {{dump(request()->user())}}
+
 @inertia
 
 <div id="app"></div>

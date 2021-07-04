@@ -24,4 +24,7 @@ Route::get('/app', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/bookmarks', [\App\Http\Controllers\BookmarkController::class, 'index'])->name('bookmark.index');
+
 Route::middleware('web')->get('/test', [App\Http\Controllers\TestController::class, 'index'])->name('test');

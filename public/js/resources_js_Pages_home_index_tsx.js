@@ -26,7 +26,7 @@ var layout_1 = __importDefault(__webpack_require__(/*! ../../components/common/l
 var HomePage = function HomePage() {
   return react_1["default"].createElement(layout_1["default"], {
     title: 'home'
-  }, react_1["default"].createElement("div", null, react_1["default"].createElement("p", null, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam, sunt, tempora! Ab aliquam doloribus esse odio odit optio perspiciatis quas tenetur, voluptate? Enim nemo qui soluta. Ab debitis quasi vitae!")));
+  }, react_1["default"].createElement("div", null, react_1["default"].createElement("p", null, "Welcome to home page!")));
 };
 
 exports.default = HomePage;

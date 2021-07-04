@@ -25,7 +25,7 @@ if(userId) {
         });
 }
 
-EchoApp.join(`message.${roomId}`)
+EchoApp.join(`room_message.${roomId}`)
     .here((users) => {
         //
     })

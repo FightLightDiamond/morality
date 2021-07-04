@@ -1,5 +1,7 @@
 <?php
 
+use App\Events\SendPrivateMessageEvent;
+use App\Events\SendRoomMessageEvent;
 use Illuminate\Support\Facades\Broadcast;
 
 /*
@@ -14,15 +16,14 @@ use Illuminate\Support\Facades\Broadcast;
 */
 
 Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
-    return (int) $user->id === (int) $id;
+	return (int)$user->id === (int)$id;
 });
 
-Broadcast::channel('message.{userId}', function ($user, $userId) {
-	info('private' . $userId);
-	return $user->id === (int) $userId;
+Broadcast::channel(SendPrivateMessageEvent::CHANNEL . '{userId}', function ($user, $userId) {
+	return $user->id === (int)$userId;
 }, ['guards' => ['web']]);
 
-Broadcast::channel('message.{roomId}', function ($user, $roomId) {
+Broadcast::channel(SendRoomMessageEvent::CHANNEL . '{roomId}', function ($user, $roomId) {
 	if ($user->canJoinRoom($roomId)) {
 		return ['id' => $user->id, 'name' => $user->name];
 	}

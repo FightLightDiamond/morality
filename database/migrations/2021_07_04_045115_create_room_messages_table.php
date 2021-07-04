@@ -16,8 +16,10 @@ class CreateRoomMessagesTable extends Migration
         Schema::create('room_messages', function (Blueprint $table) {
             $table->id();
 	        $table->text('message');
-	        $table->integer('sender')->unsigned();
-	        $table->integer('room_id')->unsigned();
+	        $table->unsignedBigInteger('sender')->index();
+	        $table->unsignedBigInteger('room_id')->index();
+	        $table->foreign('sender')->references('id')->on('users');
+	        $table->foreign('room_id')->references('id')->on('rooms');
             $table->timestamps();
         });
     }

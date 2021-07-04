@@ -15,8 +15,10 @@ class CreateRoomUsersTable extends Migration
     {
         Schema::create('room_users', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('room_id')->index();
-            $table->unsignedBigInteger('user_id')->index();
+	        $table->unsignedBigInteger('user_id')->index();
+	        $table->unsignedBigInteger('room_id')->index();
+	        $table->foreign('user_id')->references('id')->on('users');
+	        $table->foreign('room_id')->references('id')->on('rooms');
             $table->unsignedTinyInteger('status');
             $table->timestamps();
         });

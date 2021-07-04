@@ -2889,7 +2889,7 @@ if (userId) {
   });
 }
 
-EchoApp.join("message.".concat(roomId)).here(function (users) {//
+EchoApp.join("room_message.".concat(roomId)).here(function (users) {//
 }).joining(function (user) {
   console.log(user.name);
 }).leaving(function (user) {
@@ -73395,6 +73395,22 @@ module.exports = function getSideChannel() {
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var map = {
+	"./bookmark/list": [
+		"./resources/js/Pages/bookmark/list/index.tsx",
+		"resources_js_Pages_bookmark_list_index_tsx"
+	],
+	"./bookmark/list/": [
+		"./resources/js/Pages/bookmark/list/index.tsx",
+		"resources_js_Pages_bookmark_list_index_tsx"
+	],
+	"./bookmark/list/index": [
+		"./resources/js/Pages/bookmark/list/index.tsx",
+		"resources_js_Pages_bookmark_list_index_tsx"
+	],
+	"./bookmark/list/index.tsx": [
+		"./resources/js/Pages/bookmark/list/index.tsx",
+		"resources_js_Pages_bookmark_list_index_tsx"
+	],
 	"./home": [
 		"./resources/js/Pages/home/index.tsx",
 		"resources_js_Pages_home_index_tsx"
@@ -73566,7 +73582,7 @@ module.exports = webpackAsyncContext;
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if (chunkId === "resources_js_Pages_home_index_tsx") return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_Pages_bookmark_list_index_tsx":1,"resources_js_Pages_home_index_tsx":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

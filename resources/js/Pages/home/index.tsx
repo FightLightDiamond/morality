@@ -5,7 +5,7 @@ const HomePage = () => {
     return (
         <Layout title={'home'}>
             <div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam, sunt, tempora! Ab aliquam doloribus esse odio odit optio perspiciatis quas tenetur, voluptate? Enim nemo qui soluta. Ab debitis quasi vitae!</p>
+                <p>Welcome to home page!</p>
             </div>
         </Layout>
     )
