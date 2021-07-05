@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookmarkController;
 use Illuminate\Support\Facades\Route;
 use Inerita\Inerita;
 /*
@@ -25,6 +26,9 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/bookmarks', [\App\Http\Controllers\BookmarkController::class, 'index'])->name('bookmark.index');
+Route::group(['middleware' => ['web', 'auth']], function () {
+    Route::get('/bookmarks', [BookmarkController::class, 'index'])->name('bookmark.index');
+});
+
 
 Route::middleware('web')->get('/test', [App\Http\Controllers\TestController::class, 'index'])->name('test');
