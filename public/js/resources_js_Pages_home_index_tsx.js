@@ -58,16 +58,14 @@ var Layout = function Layout(props) {
   var title = props.title,
       children = props.children;
   return react_1["default"].createElement("div", {
-    className: 'container'
+    className: "container"
   }, title && react_1["default"].createElement("div", {
-    className: 'row'
+    className: "row"
   }, react_1["default"].createElement("div", {
-    className: 'col-sm-12'
+    className: "col-sm-12"
   }, react_1["default"].createElement("h1", null, title))), react_1["default"].createElement("div", {
-    className: 'row'
-  }, react_1["default"].createElement("div", {
-    className: 'col-sm-12'
-  }, children)));
+    className: "row"
+  }, children));
 };
 
 exports.default = Layout;

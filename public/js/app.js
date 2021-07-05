@@ -73395,6 +73395,22 @@ module.exports = function getSideChannel() {
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var map = {
+	"./bookmark/add": [
+		"./resources/js/Pages/bookmark/add/index.tsx",
+		"resources_js_Pages_bookmark_add_index_tsx"
+	],
+	"./bookmark/add/": [
+		"./resources/js/Pages/bookmark/add/index.tsx",
+		"resources_js_Pages_bookmark_add_index_tsx"
+	],
+	"./bookmark/add/index": [
+		"./resources/js/Pages/bookmark/add/index.tsx",
+		"resources_js_Pages_bookmark_add_index_tsx"
+	],
+	"./bookmark/add/index.tsx": [
+		"./resources/js/Pages/bookmark/add/index.tsx",
+		"resources_js_Pages_bookmark_add_index_tsx"
+	],
 	"./bookmark/list": [
 		"./resources/js/Pages/bookmark/list/index.tsx",
 		"resources_js_Pages_bookmark_list_index_tsx"
@@ -73410,6 +73426,22 @@ var map = {
 	"./bookmark/list/index.tsx": [
 		"./resources/js/Pages/bookmark/list/index.tsx",
 		"resources_js_Pages_bookmark_list_index_tsx"
+	],
+	"./bookmark/view": [
+		"./resources/js/Pages/bookmark/view/index.tsx",
+		"resources_js_Pages_bookmark_view_index_tsx"
+	],
+	"./bookmark/view/": [
+		"./resources/js/Pages/bookmark/view/index.tsx",
+		"resources_js_Pages_bookmark_view_index_tsx"
+	],
+	"./bookmark/view/index": [
+		"./resources/js/Pages/bookmark/view/index.tsx",
+		"resources_js_Pages_bookmark_view_index_tsx"
+	],
+	"./bookmark/view/index.tsx": [
+		"./resources/js/Pages/bookmark/view/index.tsx",
+		"resources_js_Pages_bookmark_view_index_tsx"
 	],
 	"./home": [
 		"./resources/js/Pages/home/index.tsx",
@@ -73582,7 +73614,7 @@ module.exports = webpackAsyncContext;
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_Pages_bookmark_list_index_tsx":1,"resources_js_Pages_home_index_tsx":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_Pages_bookmark_add_index_tsx":1,"resources_js_Pages_bookmark_list_index_tsx":1,"resources_js_Pages_bookmark_view_index_tsx":1,"resources_js_Pages_home_index_tsx":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};
