@@ -22,6 +22,7 @@ class BookmarkController extends Controller
 	{
 		$bookmarks = Bookmark::query()
 			->where('user_id', Auth::id())
+			->where('is_active', 1)
 			->get();
 		return Inertia::render('bookmark/list/index', compact('bookmarks'));
 	}
@@ -64,4 +65,21 @@ class BookmarkController extends Controller
 		}
 		return Inertia::render('bookmark/view/index', compact('bookmark'));
 	}
+
+	public function makeActive(Request $request)
+    {
+        $data = $this->validate($request, [
+           'id' => ['required', 'exists:bookmarks,id']
+        ]);
+
+        $bookmark = Bookmark::find($data['id']);
+
+        if(Auth::id() !== $bookmark->user_id) {
+            abort(401, 'You are not allowed to view this bookmark');
+        }
+
+        $bookmark->update(['is_active' => 1]);
+
+        return redirect()->route('bookmark.index');
+    }
 }
