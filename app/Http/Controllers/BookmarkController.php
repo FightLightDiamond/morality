@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Services\BookmarkService;
 use App\Models\Bookmark;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -32,28 +33,22 @@ class BookmarkController extends Controller
 		return Inertia::render('bookmark/add/index');
 	}
 
-	public function getPreviewData(Request $request)
+	public function getPreviewData(Request $request, BookmarkService $bookmarkService)
 	{
 		$postData = $this->validate($request, [
 			'link' => ['required']
 		]);
 
-//    	$data = Http::get($postData['link']);
-		$data = \OpenGraph::fetch($postData['link'], true);
+		$data = $bookmarkService->getBookmarkData($postData['link']);
 
 		$bookmark = Bookmark::create([
-			'title' => $data['title'] ?? '',
-			'description' => $data['description'] ?? '',
+			'title' => $data['title'],
+			'description' => $data['description'],
 			'type' => $data['type'] ?? '',
 			'url' => $postData['link'],
-			'image_url' => $data['image'] ?? '',
+			'image_url' => $data['image'],
 			'user_id' => $request->user()->id,
 		]);
-
-//		return Inertia::render('bookmark/add/index', [
-//			'data' => $data,
-//			'link' => $postData['link']
-//		]);
 
 		return redirect()->route('bookmark.view', ['bookmark' => $bookmark->id]);
 	}
