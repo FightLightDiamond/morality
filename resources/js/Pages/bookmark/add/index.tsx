@@ -19,7 +19,14 @@ const BookmarkAddPage: React.FC<Props> = () => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    Inertia.post("/bookmarks/preview", state)
+    Inertia.post("/bookmarks/preview", state, {
+      onStart: () => {
+        console.log('Start ...')
+      },
+      onFinish: () => {
+        console.log('onFinish ...')
+      }
+    })
   }
 
   return (

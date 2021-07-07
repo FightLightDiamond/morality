@@ -19,8 +19,10 @@ class BookmarkService
 
 	private function getPropertyData(string $name, array $data)
 	{
-		if ($data[$name] === '' && isset($data["twitter:{$name}"]) &&
-			$data["twitter:{$name}"] !== ''
+		if (isset($data[$name])
+			&& $data[$name] === ''
+			&& isset($data["twitter:{$name}"])
+			&& $data["twitter:{$name}"] !== ''
 		) {
 			return $data["twitter:{$name}"];
 		}
