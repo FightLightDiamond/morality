@@ -1,6 +1,9 @@
 import React, {useState} from "react"
 import Layout from "../../../components/common/layout";
-import {Inertia} from "@inertiajs/inertia"
+
+import { Inertia } from "@inertiajs/inertia"
+import route from "ziggy-js"
+import { InertiaLink } from "@inertiajs/inertia-react"
 
 interface Props {
   bookmark: any
@@ -15,7 +18,6 @@ const BookmarkViewPage: React.FC<Props> = ({bookmark}) => {
   return (
     <Layout title={'Bookmark'}>
       <div className={'row'}>
-        <h1>view</h1>
         <div className={'col-md-12'}>
           {
             bookmark.title && (
@@ -24,7 +26,7 @@ const BookmarkViewPage: React.FC<Props> = ({bookmark}) => {
                   {bookmark.title}
                 </div>
                 <div className={'card-body'}>
-                  <p>{bookmark.url}</p>
+                  <p><InertiaLink href={bookmark.url}>{bookmark.url}</InertiaLink></p>
                   <p>{bookmark.desciption}</p>
                   <div className={'mb-3'}>
                     <img width={'100%'} src={bookmark.image_url} alt={bookmark.title}/>

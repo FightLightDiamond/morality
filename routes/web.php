@@ -14,9 +14,7 @@ use Inerita\Inerita;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',  [App\Http\Controllers\HomeController::class, 'index'])->name('welcome');
 
 Route::get('/app', function () {
     return view('app');
@@ -35,4 +33,4 @@ Route::group(['middleware' => ['web', 'auth']], function () {
     Route::post('/bookmarks/make-active', [BookmarkController::class, 'makeActive'])->name('bookmark.active');
 });
 
-Route::middleware('web')->get('/test', [App\Http\Controllers\TestController::class, 'index'])->name('test');
+//Route::middleware('web')->get('/test', [App\Http\Controllers\TestController::class, 'index'])->name('test');

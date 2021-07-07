@@ -43,10 +43,10 @@ class BookmarkController extends Controller
 
 		$bookmark = Bookmark::create([
 			'title' => $data['title'] ?? '',
-			'description' => $data['description'] || '',
-			'type' => $data['type'] || '',
+			'description' => $data['description'] ?? '',
+			'type' => $data['type'] ?? '',
 			'url' => $postData['link'],
-			'image_url' => $data['image'],
+			'image_url' => $data['image'] ?? '',
 			'user_id' => $request->user()->id,
 		]);
 

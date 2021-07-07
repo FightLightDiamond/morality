@@ -1,3 +1,5 @@
+// import route from 'ziggy-js';
+
 import Echo from "laravel-echo"
 
 window.EchoApp = new Echo({

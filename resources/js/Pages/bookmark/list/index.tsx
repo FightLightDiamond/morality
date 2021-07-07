@@ -1,8 +1,12 @@
 import React from "react";
 import Layout from "../../../components/common/layout";
+import { InertiaLink } from "@inertiajs/inertia-react"
+import route from "ziggy-js"
+import BookmarkItem from "../item"
+import IBookmark from "../../../contracts/IBookmark"
 
 interface Props {
-  bookmarks: Array<any>
+  bookmarks: Array<IBookmark>
 }
 
 const BookmarkListPage: React.FC<Props> = ({bookmarks}) => {
@@ -13,9 +17,7 @@ const BookmarkListPage: React.FC<Props> = ({bookmarks}) => {
           {
             bookmarks.length > 0 && bookmarks.map((bookmark, index) => {
               return (
-                <li className={'list-group-item'} key={index}>
-                  <p>Title: {bookmark.title}</p>
-                </li>
+                <BookmarkItem key={index} bookmark={bookmark}/>
               )
             })
           }

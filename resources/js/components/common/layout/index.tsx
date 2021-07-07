@@ -1,4 +1,5 @@
 import React from "react"
+import Menu from "../nav"
 
 interface Props {
   title?: string
@@ -9,21 +10,24 @@ const Layout: React.FC<Props> = (props) => {
   const { title, children } = props
 
   return (
-    <div className={"container"}>
-      {
-        title && <div className={"row"}>
-          <div className={"col-sm-12"}>
-            <h1>
-              {title}
-            </h1>
-          </div>
-        </div>
-      }
+    <React.Fragment>
+      <div className={'mb-3'}>
+        <Menu />
+      </div>
 
-      <div className={"row"}>
+      <div className="container">
+        {
+          title && <div className={"row"}>
+            <div className={"col-sm-12"}>
+              <h1>
+                {title}
+              </h1>
+            </div>
+          </div>
+        }
         {children}
       </div>
-    </div>
+    </React.Fragment>
   )
 }
 
