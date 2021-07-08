@@ -13,3 +13,10 @@ const mix = require('laravel-mix');
 
 mix.ts('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css');
+
+// // Mix v6
+// const path = require('path');
+//
+// mix.alias({
+//     ziggy: path.resolve('vendor/tightenco/ziggy/dist'), // or 'vendor/tightenco/ziggy/dist/vue' if you're using the Vue plugin
+// });

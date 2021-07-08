@@ -1,6 +1,7 @@
 import React from "react"
 import { InertiaLink } from "@inertiajs/inertia-react"
 import route from "ziggy-js"
+// import { Ziggy } from '../../../ziggy';
 
 const Menu = () => {
   return (

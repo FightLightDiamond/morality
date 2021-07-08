@@ -24,13 +24,10 @@ import {InertiaProgress} from '@inertiajs/progress'
 
 InertiaProgress.init()
 
-// createInertiaApp({
-//     id: 'my-app',
-//     resolve: name => require(`./Pages/${name}`),
-//     setup({ el, App, props }) {
-//         render(<App {...props} />, el)
-//     },
-// })
+// import route from 'ziggy-js';
+// import { Ziggy } from './ziggy';
+//
+// route('home', undefined, undefined, Ziggy);
 
 const app = document.getElementById('app')
 
