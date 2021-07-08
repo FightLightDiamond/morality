@@ -8,7 +8,8 @@ interface IBookmark {
   user_id: number
   is_active: boolean
   created_at: string
-  updated_at: string
+  updated_at: string,
+  views: number
 }
 
 export default IBookmark

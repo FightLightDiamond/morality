@@ -58,6 +58,9 @@ class BookmarkController extends Controller
 		if(Auth::id() !== $bookmark->user_id) {
 			abort(401, 'You are not allowed to view this bookmark');
 		}
+
+		$bookmark->load(['tags']);
+
 		return Inertia::render('bookmark/view/index', compact('bookmark'));
 	}
 
@@ -76,5 +79,12 @@ class BookmarkController extends Controller
         $bookmark->update(['is_active' => 1]);
 
         return redirect()->route('bookmark.index');
+    }
+
+    public function redirect(Bookmark $bookmark)
+    {
+	    $bookmark->increment('views');
+	    $bookmark->save();
+		return $bookmark;
     }
 }

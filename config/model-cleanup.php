@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Bookmark;
+
 return [
 
     /*
@@ -7,6 +9,6 @@ return [
      * will be cleaned.
      */
     'models' => [
-        \App\Models\Bookmark::class
+        Bookmark::class
     ],
 ];
