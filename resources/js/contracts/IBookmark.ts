@@ -1,3 +1,5 @@
+import ITag from "./ITag"
+
 interface IBookmark {
   id: number
   title: string
@@ -7,9 +9,10 @@ interface IBookmark {
   image_url: string
   user_id: number
   is_active: boolean
-  created_at: string
-  updated_at: string,
   views: number
+  tags: Array<ITag>
+  created_at: string
+  updated_at: string
 }
 
 export default IBookmark

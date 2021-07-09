@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Services\BookmarkService;
 use App\Models\Bookmark;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
@@ -86,5 +87,26 @@ class BookmarkController extends Controller
 	    $bookmark->increment('views');
 	    $bookmark->save();
 		return $bookmark;
+    }
+
+    public function handleUpdate(Request $request, BookmarkService $bookmarkService): RedirectResponse
+    {
+        $postData = $this->validate($request, [
+            'tags' => ['required', 'array'],
+            'id' => ['required', 'exists:bookmarks,id']
+        ]);
+
+
+        $bookmark = Bookmark::find($postData['id']);
+
+        if (Auth::id() != $bookmark->user_id) {
+            abort(401, 'You are not allowed to make this bookmark active');
+        }
+
+        $ids = $bookmarkService->handleBookmarkTags($postData['tags']);
+
+        $bookmark->tags()->sync($ids);
+
+        return redirect()->route('bookmark.view', ['bookmark' => $bookmark->id]);
     }
 }

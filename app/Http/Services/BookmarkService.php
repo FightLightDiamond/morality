@@ -4,6 +4,8 @@
 namespace App\Http\Services;
 
 
+use App\Models\Tag;
+
 class BookmarkService
 {
 	public function getBookmarkData(string $url)
@@ -28,4 +30,14 @@ class BookmarkService
 		}
 		return $data[$name] ?? '';
 	}
+
+    public function handleBookmarkTags(array $tags)
+    {
+        $ids = collect();
+        foreach ($tags as $tag) {
+            $tag = Tag::query()->firstOrCreate(['name' => $tag]);
+            $ids->push($tag->id);
+        }
+        return $ids;
+    }
 }
