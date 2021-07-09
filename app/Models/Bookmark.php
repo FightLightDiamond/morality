@@ -24,6 +24,6 @@ class Bookmark extends Model implements GetsCleanedUp
 
 	public function tags()
 	{
-		return $this->morphedByMany(Tag::class, 'taggable');
+		return $this->morphToMany(Tag::class, 'taggable');
 	}
 }

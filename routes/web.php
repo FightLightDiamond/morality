@@ -30,6 +30,7 @@ Route::group(['middleware' => ['web', 'auth']], function () {
     Route::get('/bookmarks/view/{bookmark}', [BookmarkController::class, 'view'])->name('bookmark.view');
 
     Route::post('/bookmarks/preview', [BookmarkController::class, 'getPreviewData'])->name('bookmark.preview');
+    Route::post('/bookmarks/make-active', [BookmarkController::class, 'makeActive'])->name('bookmark.active');
     Route::get('/bookmarks/redirect/{bookmark}', [BookmarkController::class, 'redirect'])->name('bookmark.redirect');
 });
 
