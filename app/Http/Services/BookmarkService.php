@@ -5,6 +5,7 @@ namespace App\Http\Services;
 
 
 use App\Models\Tag;
+use Illuminate\Support\Collection;
 
 class BookmarkService
 {
@@ -31,7 +32,11 @@ class BookmarkService
 		return $data[$name] ?? '';
 	}
 
-    public function handleBookmarkTags(array $tags)
+    /**
+     * @param array $tags
+     * @return Collection
+     */
+    public function handleBookmarkTags(array $tags): Collection
     {
         $ids = collect();
         foreach ($tags as $tag) {
