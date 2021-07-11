@@ -29,10 +29,26 @@ InertiaProgress.init()
 //
 // route('home', undefined, undefined, Ziggy);
 
-const app = document.getElementById('app')
+// const app = document.getElementById('app')
+//
+// render(
+//     <InertiaApp initialPage={JSON.parse(app.dataset.page)}
+//                 resolveComponent={name => import(`./Pages/${name}`).then(module => module.default)}/>,
+//     app
+// )
 
-render(
-    <InertiaApp initialPage={JSON.parse(app.dataset.page)}
-                resolveComponent={name => import(`./Pages/${name}`).then(module => module.default)}/>,
-    app
-)
+import { createInertiaApp } from '@inertiajs/inertia-react'
+import {Provider} from "react-redux"
+import {store} from "./stores/store"
+
+createInertiaApp({
+  id: 'app',
+  resolve: name => require(`./Pages/${name}`),
+  setup({ el, App, props }) {
+    render(
+      <Provider store={store}>
+        <App {...props} />
+      </Provider>
+      , el)
+  },
+})

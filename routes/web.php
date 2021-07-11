@@ -33,6 +33,8 @@ Route::group(['middleware' => ['web', 'auth']], function () {
     Route::post('/bookmarks/preview', [BookmarkController::class, 'getPreviewData'])->name('bookmark.preview');
     Route::post('/bookmarks/make-active', [BookmarkController::class, 'makeActive'])->name('bookmark.active');
     Route::get('/bookmarks/redirect/{bookmark}', [BookmarkController::class, 'redirect'])->name('bookmark.redirect');
+
+    Route::get('/notes', [\App\Http\Controllers\NoteController::class, 'index'])->name('notes.index');
 });
 
 //Route::middleware('web')->get('/test', [App\Http\Controllers\TestController::class, 'index'])->name('test');
