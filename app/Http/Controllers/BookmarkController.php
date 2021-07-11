@@ -65,19 +65,24 @@ class BookmarkController extends Controller
 		return Inertia::render('bookmark/view/index', compact('bookmark'));
 	}
 
-	public function makeActive(Request $request)
+	public function makeActive(Request $request, BookmarkService $bookmarkService)
     {
-        $data = $this->validate($request, [
-           'id' => ['required', 'exists:bookmarks,id']
-        ]);
+	    $postData = $this->validate($request, [
+		    'tags' => ['required', 'array'],
+		    'id' => ['required', 'exists:bookmarks,id']
+	    ]);
 
-        $bookmark = Bookmark::find($data['id']);
+        $bookmark = Bookmark::find($postData['id']);
 
         if(Auth::id() !== $bookmark->user_id) {
             abort(401, 'You are not allowed to view this bookmark');
         }
 
         $bookmark->update(['is_active' => 1]);
+
+	    $ids = $bookmarkService->handleBookmarkTags($postData['tags']);
+
+	    $bookmark->tags()->sync($ids);
 
         return redirect()->route('bookmark.index');
     }
