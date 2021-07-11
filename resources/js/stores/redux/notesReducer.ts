@@ -1,19 +1,30 @@
-import {Action} from "../actions"
+import {IAction, ADD_NOTE, SET_NOTES} from "../actions"
+
+export interface INode {
+  id: number
+  name: string
+}
 
 export interface INoteState {
-  notes: Array<string>
+  items: Array<INode>
 }
 
 const initialState = {
-  notes: []
+  items: [],
 }
 
-export const notesReducer = (state: INoteState = initialState, action: Action) => {
+export const notesReducer = (state: INoteState = initialState, action: IAction) => {
   switch (action.type) {
-    case "ADD_NOTE": {
+    case ADD_NOTE: {
       return {
         ...state,
-        notes: [...state.notes, action.payload]
+        items: [...state.items, action.payload]
+      }
+    }
+    case SET_NOTES: {
+      return {
+        ...state,
+        items: action.payload
       }
     }
     default: return state

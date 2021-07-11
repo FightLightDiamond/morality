@@ -10,11 +10,13 @@ class TagController extends Controller
 	public function search(Request $request)
 	{
 		$postData = $this->validate($request, [
-			'tag' => ['required']
+			'tag' => ['min:1']
 		]);
 
 		return Tag::query()
-			->where('name', 'like', "{$postData['tag']}%")
+			->when($postData, function ($q) use ($postData) {
+				$q->where('name', 'like', "{$postData['tag']}%");
+			})
 			->limit(20)
 			->get();
 	}

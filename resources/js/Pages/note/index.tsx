@@ -1,27 +1,30 @@
-import React, { ChangeEvent, useEffect, useState } from "react"
+import React, {useState, useEffect} from "react"
 import Layout from "../../components/common/layout";
-import { Inertia } from "@inertiajs/inertia"
-import route from "ziggy-js"
-import { InertiaLink } from "@inertiajs/inertia-react"
 import NewNoteInput from "./new-note-input"
-import { connect, useDispatch, useSelector } from "react-redux"
-import {INoteState} from "../../stores/redux/notesReducer"
-import {addNote} from "../../stores/actions"
-
-
+import { connect } from "react-redux"
+import {INode} from "../../stores/redux/notesReducer"
+import { addNote, setNotes } from "../../stores/actions"
+import axios from "axios"
 
 interface Props {
-  notes: INoteState[],
-  addNote(note: string): void
-  // onAddNote(note: string): void
+  notes: Array<INode>,
+  addNote(note: INode): void
+  setNotes(notes?: Object): void
 }
 
-const NotePage: React.FC<Props>= ({notes, addNote}) => {
-  // const notes = useSelector<INoteState, INoteState["notes"]>((state) => state.notes)
-  // const dispatch = useDispatch();
-  // const onAddNote = (note: string) => {
-  //   dispatch(addNote(note))
-  // }
+const NotePage: React.FC<Props>= ({notes, addNote, setNotes}) => {
+  // const [text, setText] = useState('')
+
+  useEffect(() => {
+    axios.get('http://localhost/api/tags')
+    // axios.get('http://localhost/api/tags-list')
+    .then( res => {
+      // console.log(typeof Object.values(res.data))
+      // console.log( Object.values(res.data))
+      //setNotes(res.data)
+      setNotes(res.data)
+    })
+  }, [])
 
   return (
     <Layout title={'Notes'}>
@@ -29,9 +32,10 @@ const NotePage: React.FC<Props>= ({notes, addNote}) => {
         <NewNoteInput add={addNote}/>
         <hr/>
         <ul>
+          {/*{JSON.stringify(notes)}*/}
           {
             notes.map((note, index) => {
-              return <li key={index}>{note}</li>
+              return <li key={note.id}>{note.name}</li>
             })
           }
         </ul>
@@ -42,14 +46,19 @@ const NotePage: React.FC<Props>= ({notes, addNote}) => {
 
 const mapStateToProps = (state: any) => {
   return {
-    notes: state.notes.notes
+    notes: state.notes.items
   }
 }
 
+/**
+ * Tự động dispatch
+ * const addNote = (note: string) => {
+ *  dispatch(addNote(note))
+ * }
+ */
 const mapActionToProps = {
-  addNote: addNote
+  addNote: addNote,
+  setNotes: setNotes
 }
 
 export default connect(mapStateToProps, mapActionToProps)(NotePage)
-
-// export default NotePage

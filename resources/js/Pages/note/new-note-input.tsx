@@ -1,7 +1,8 @@
 import React, { ChangeEvent, useEffect, useState } from "react"
+import { INode } from "../../stores/redux/notesReducer"
 
 interface Props {
-  add(note: string): void
+  add(note: INode): void
 }
 
 const NewNoteInput: React.FC<Props> = ({ add }) => {
@@ -12,16 +13,23 @@ const NewNoteInput: React.FC<Props> = ({ add }) => {
   }
 
   const handleAddClick = () => {
-    add(note)
+    add(
+      {
+        id: Math.floor(Math.random() * 99000) + 1,
+        name: note
+      }
+    )
     setNote("")
   }
-  return (
 
+  return (
     <div className={"col-md-12"}>
       <input
         onChange={update}
         value={note}
-        type="text" name={"note"} placeholder={"Note"} />
+        type="text" name={"note"}
+        placeholder={"Note"}
+      />
       <button onClick={handleAddClick}>Add</button>
     </div>
   )

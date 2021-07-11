@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\TagController;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,3 +21,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/tags', [TagController::class, 'search'])->middleware('api');
+Route::get('/tags-list', function () {
+	return Tag::query()->pluck('name');
+})->middleware('api');
