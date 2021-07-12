@@ -29,7 +29,8 @@ const persistConfig = {
 const rootReducer = combineReducers({
   notes: persistReducer(persistConfig, notesReducer),
   counter: counterReducer,
-  auth: authReducer,
+  // auth: authReducer,
+  auth: persistReducer(persistConfig, authReducer),
 })
 
 /**
@@ -76,9 +77,13 @@ const myMiddleware = (store: any) => (next: any) => (action: IAction) => {
 
 const logger = createLogger();
 
-export const store = configureStore({
+const store = configureStore({
   reducer: rootReducer,
   middleware: [thunk, myMiddleware]
 })
 
+export const persistor = persistStore(store)
+
 export type RootState = ReturnType<typeof store.getState>
+
+export default store

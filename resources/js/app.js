@@ -39,7 +39,9 @@ InertiaProgress.init()
 
 import { createInertiaApp } from '@inertiajs/inertia-react'
 import {Provider} from "react-redux"
-import {store} from "./stores/store"
+import store, {persistor} from "./stores/store"
+import {PersistGate} from "redux-persist/integration/react"
+
 
 createInertiaApp({
   id: 'app',
@@ -47,7 +49,9 @@ createInertiaApp({
   setup({ el, App, props }) {
     render(
       <Provider store={store}>
-        <App {...props} />
+        <PersistGate loading={null} persistor={persistor}>
+          <App {...props} />
+        </PersistGate>
       </Provider>
       , el)
   },

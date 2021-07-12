@@ -9,7 +9,7 @@ export interface INoteState {
   items: Array<INode>
 }
 
-const initialState = {
+const initialState: any = {
   items: [],
 }
 
