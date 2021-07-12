@@ -3,13 +3,18 @@ import {notesReducer} from "./redux/notesReducer"
 // import { Action, Dispatch, Store } from "redux"
 import {IAction} from "./actions";
 import thunk from "redux-thunk"
+import { configureStore } from '@reduxjs/toolkit'
+import {createLogger} from "redux-logger"
+
+import counterReducer from './counter/counterSlice'
 
 
 /**
  * Phân biệt các reducer
  */
 const reducer = combineReducers({
-  notes: notesReducer
+  notes: notesReducer,
+  counter: counterReducer,
 })
 
 /**
@@ -17,6 +22,7 @@ const reducer = combineReducers({
  * @param store
  */
 const myMiddleware = (store: any) => (next: any) => (action: IAction) => {
+  console.log('action', action)
   if(action.type === 'ADD_NOTE' && action.payload.name === 'fuck') {
     action.payload = '****'
   }
@@ -46,7 +52,16 @@ const myMiddleware = (store: any) => (next: any) => (action: IAction) => {
 // }
 
 // export const store = createStore(notesReducer);
-export const store = createStore(
+// export const store = createStore(
+//   reducer,
+//   applyMiddleware(thunk, myMiddleware)
+// );
+
+const logger = createLogger();
+
+export const store = configureStore({
   reducer,
-  applyMiddleware(thunk, myMiddleware)
-);
+  middleware: [thunk, myMiddleware]
+})
+
+export type RootState = ReturnType<typeof store.getState>

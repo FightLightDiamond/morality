@@ -3,8 +3,8 @@ import axios from "axios";
 export const ADD_NOTE = "ADD_NOTE"
 export const SET_NOTES = "SET_NOTES"
 export const FETCH_NOTES = "FETCH_NOTES"
-import { connect, useDispatch, useSelector } from "react-redux"
-import { Action, Dispatch } from "redux"
+import { Dispatch } from "redux"
+
 
 export type IAction = {
   type: string
