@@ -3,28 +3,27 @@ import Layout from "../../components/common/layout";
 import NewNoteInput from "./new-note-input"
 import { connect } from "react-redux"
 import {INode} from "../../stores/redux/notesReducer"
-import { addNote, setNotes } from "../../stores/actions"
+import { addNote, setNotes, fetchNotes } from "../../stores/actions"
 import axios from "axios"
 
 interface Props {
   notes: Array<INode>,
   addNote(note: INode): void
-  setNotes(notes?: Object): void
+  setNotes(notes?: Object): void,
+  fetchNotes(): void
 }
 
-const NotePage: React.FC<Props>= ({notes, addNote, setNotes}) => {
-  // const [text, setText] = useState('')
-
+const NotePage: React.FC<Props>= ({notes, addNote, setNotes, fetchNotes}) => {
   useEffect(() => {
-    axios.get('http://localhost/api/tags')
-    // axios.get('http://localhost/api/tags-list')
-    .then( res => {
-      // console.log(typeof Object.values(res.data))
-      // console.log( Object.values(res.data))
-      //setNotes(res.data)
-      setNotes(res.data)
-    })
-  }, [])
+    /**
+     * Call Api by life circle
+     */
+    // axios.get('/api/tags')
+    // .then( res => {
+    //   setNotes(res.data)
+    // })
+    fetchNotes()
+  }, [fetchNotes])
 
   return (
     <Layout title={'Notes'}>
@@ -32,7 +31,6 @@ const NotePage: React.FC<Props>= ({notes, addNote, setNotes}) => {
         <NewNoteInput add={addNote}/>
         <hr/>
         <ul>
-          {/*{JSON.stringify(notes)}*/}
           {
             notes.map((note, index) => {
               return <li key={note.id}>{note.name}</li>
@@ -56,9 +54,32 @@ const mapStateToProps = (state: any) => {
  *  dispatch(addNote(note))
  * }
  */
-const mapActionToProps = {
-  addNote: addNote,
-  setNotes: setNotes
-}
+// const mapActionToProps = {
+//   addNote: addNote,
+//   setNotes: setNotes,
+//   fetchNotes: fetchNotes
+// }
+
+/**
+ * Detail dispatch
+ * @param dispatch
+ */
+const mapActionToProps = (dispatch: any) => ({
+  addNote: (note: INode) => dispatch(addNote(note)),
+  setNotes: (notes: Array<INode>) => dispatch(setNotes(notes)),
+  /**
+   * Call Api by Action props
+   */
+  // fetchNotes: async () => {
+  //   const res = await axios.get('/api/tags');
+  //   console.log(res.data)
+  //   /**
+  //    * Dispatch set to do
+  //    */
+  //   dispatch(setNotes(res.data))
+  // }
+
+  fetchNotes: () => dispatch(fetchNotes())
+})
 
 export default connect(mapStateToProps, mapActionToProps)(NotePage)
