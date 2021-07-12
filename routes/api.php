@@ -24,3 +24,5 @@ Route::get('/tags', [TagController::class, 'search'])->middleware('api');
 Route::get('/tags-list', function () {
 	return Tag::query()->pluck('name');
 })->middleware('api');
+
+Route::post('/login');
