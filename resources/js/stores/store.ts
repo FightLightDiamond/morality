@@ -7,14 +7,29 @@ import { configureStore } from '@reduxjs/toolkit'
 import {createLogger} from "redux-logger"
 
 import counterReducer from './counter/counterSlice'
+import authReducer from './auth/authSlice'
+
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+
+import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 
 
+const persistConfig = {
+  key: 'root',
+  storage: storage,
+  stateReconciler: autoMergeLevel2 // Xem thêm tại mục "Quá trình merge".
+};
+
+
+// const pReducer = persistReducer(persistConfig, counterSlice);
 /**
  * Phân biệt các reducer
  */
-const reducer = combineReducers({
-  notes: notesReducer,
+const rootReducer = combineReducers({
+  notes: persistReducer(persistConfig, notesReducer),
   counter: counterReducer,
+  auth: authReducer,
 })
 
 /**
@@ -40,6 +55,8 @@ const myMiddleware = (store: any) => (next: any) => (action: IAction) => {
   return next(action);
 }
 
+
+
 /**
  * Redux thunk thay thế cho async middleware
  */
@@ -60,7 +77,7 @@ const myMiddleware = (store: any) => (next: any) => (action: IAction) => {
 const logger = createLogger();
 
 export const store = configureStore({
-  reducer,
+  reducer: rootReducer,
   middleware: [thunk, myMiddleware]
 })
 

@@ -8,6 +8,10 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * Class LoginController
+ * @package App\Http\Controllers\Api\Auth
+ */
 class LoginController extends Controller
 {
     /**
@@ -16,16 +20,27 @@ class LoginController extends Controller
      */
     public function authenticate(Request $request): JsonResponse
     {
-        $credentials = $request->validate([
+        $postData = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
+            'token_name' => ['required'],
         ]);
 
+        $credentials = [
+            'email' => $postData['email'],
+            'password' => $postData['password'],
+        ];
+
         if (Auth::attempt($credentials)) {
-            $user = User::where('email', $credentials['email'])->first();
-            return response()->json($user->createToken($request->token_name));
+            $user = User::query()
+                ->where('email', $postData['email'])
+                ->first();
+
+            $token = $user->createToken($postData['token_name']);
+
+            return response()->json(['token' => $token->plainTextToken]);
         }
 
-        return response()->json(['email' => 'The provided credentials do not match our records.'], 422);
+        return response()->json(['email' => 'The provided credentials do not match our records.'], 401);
     }
 }

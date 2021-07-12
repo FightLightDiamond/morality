@@ -37,4 +37,6 @@ Route::group(['middleware' => ['web', 'auth']], function () {
     Route::get('/notes', [\App\Http\Controllers\NoteController::class, 'index'])->name('notes.index');
 });
 
+Route::inertia('/auth', 'login/index')->name('auth');
+
 //Route::middleware('web')->get('/test', [App\Http\Controllers\TestController::class, 'index'])->name('test');

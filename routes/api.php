@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\Auth\LoginController;
 use App\Http\Controllers\TagController;
 use App\Models\Tag;
 use Illuminate\Http\Request;
@@ -16,13 +17,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+//Route::middleware('auth:api')->get('/user', function (Request $request) {
+//    return $request->user();
+//});
 
 Route::get('/tags', [TagController::class, 'search'])->middleware('api');
+
 Route::get('/tags-list', function () {
 	return Tag::query()->pluck('name');
 })->middleware('api');
 
-Route::post('/login');
+Route::post('/login', [LoginController::class, 'authenticate']);
+
+Route::middleware('auth:sanctum')
+    ->get('/user', function (Request $request) {
+    return $request->user();
+});
