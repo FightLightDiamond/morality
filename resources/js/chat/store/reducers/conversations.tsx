@@ -1,74 +1,111 @@
+import React from "react";
+
 const initialState = {
-    conversations: [],
-    selectedConversation: {}
+  conversations: [],
+  selectedConversation: {}
 };
 
 initialState.selectedConversation = initialState.conversations[1];
 
-const conversationsReducer = (state = initialState, action) => {
-    switch (action.type) {
-        case 'CONVERSATIONS_LOADED': {
-            const newState = { ...state };
-            newState.conversations = action.payload.conversations ? action.payload.conversations : [];
-            newState.selectedConversation = action.payload.selectedConversation;
+interface IConversation {
+  id: string
+  messages: any
+}
 
-            return newState;
+interface IMessage {
+  imageUrl: string | null
+  imageAlt: string | null
+  messageText: string
+  createdAt: string
+  isMyMessage: boolean
+}
+
+interface IState {
+  conversations: Array<IConversation> | []
+  selectedConversation: {
+    id: string
+    messages: Array<IMessage>
+  } | {} | null
+}
+
+interface IAction {
+  type: string,
+  conversationId: string
+  textMessage: string
+  payload: {
+    conversations: Array<IConversation> | []
+    selectedConversation: {
+      id: string
+      messages: Array<IMessage>
+    } | {} | null
+  }
+}
+
+
+const conversationsReducer = (state: IState = initialState, action: IAction) => {
+  switch (action.type) {
+    case 'CONVERSATIONS_LOADED': {
+      const newState = {...state};
+      newState.conversations = action.payload.conversations ? action.payload.conversations : [];
+      newState.selectedConversation = action.payload.selectedConversation;
+
+      return newState;
+    }
+    case 'SELECTED_CONVERSATION_CHANGED': {
+      const newState: any = {...state};
+      newState.selectedConversation =
+        newState.conversations.find(
+          (conversation: any) => conversation.id === action.conversationId
+        );
+
+      return newState;
+    }
+    case 'DELETE_CONVERSATION': {
+      if (state.selectedConversation) {
+        const newState: any = {...state};
+
+        let selectedConversationIndex =
+          newState.conversations.findIndex((c: IConversation) => c.id === newState.selectedConversation.id);
+        newState.conversations.splice(selectedConversationIndex, 1);
+
+        if (newState.conversations.length > 0) {
+          if (selectedConversationIndex > 0) {
+            --selectedConversationIndex;
+          }
+
+          newState.selectedConversation = newState.conversations[selectedConversationIndex];
+        } else {
+          newState.selectedConversation = null;
         }
-      case 'SELECTED_CONVERSATION_CHANGED': {
-        const newState = { ...state };
-        newState.selectedConversation = 
-            newState.conversations.find(
-                conversation => conversation.id === action.conversationId
-            );
 
         return newState;
       }
-      case 'DELETE_CONVERSATION': {
-        if (state.selectedConversation) {
-            const newState = { ...state };
 
-            let selectedConversationIndex = 
-                newState.conversations.findIndex(c => c.id === newState.selectedConversation.id);
-            newState.conversations.splice(selectedConversationIndex, 1);
-
-            if (newState.conversations.length > 0) {
-                if (selectedConversationIndex > 0) {
-                    --selectedConversationIndex;
-                }
-        
-                newState.selectedConversation = newState.conversations[selectedConversationIndex];
-            } else {
-                newState.selectedConversation = null;
-            }
-
-            return newState;
-        }
-        
-        return state;
-      }
-      case 'NEW_MESSAGE_ADDED': {
-          if (state.selectedConversation) {
-            const newState = { ...state };
-            newState.selectedConversation = { ...newState.selectedConversation };
-            
-            newState.selectedConversation.messages.unshift(
-                {
-                    imageUrl: null,
-                    imageAlt: null,
-                    messageText: action.textMessage,
-                    createdAt: 'Apr 16',
-                    isMyMessage: true
-                },
-            )
-    
-            return newState;
-          }
-
-          return state;
-      }
-      default:
-        return state;
+      return state;
     }
+    case 'NEW_MESSAGE_ADDED': {
+      if (state.selectedConversation) {
+        const newState: any = {...state};
+        newState.selectedConversation = {...newState.selectedConversation};
+
+        newState.selectedConversation.messages.unshift(
+          {
+            imageUrl: null,
+            imageAlt: null,
+            messageText: action.textMessage,
+            createdAt: 'Apr 16',
+            isMyMessage: true
+          },
+        )
+
+        return newState;
+      }
+
+      return state;
+    }
+    default:
+      return state;
   }
-  
+}
+
 export default conversationsReducer;

@@ -8,7 +8,7 @@ import './MessageList.scss';
 interface IProps {
   conversationId: string,
   getMessagesForConversation(conversationId: string): any,
-  loadMessages(conversationId: string, lastMessageId?: number): void
+  loadMessages(conversationId: string, lastMessageId?: number | null): void
 }
 
 const MessageList: React.FC<IProps> = ({ conversationId, getMessagesForConversation, loadMessages }) => {

@@ -17,7 +17,7 @@ export const newMessageAdded = (textMessage: string) => ({
   textMessage
 });
 
-export const messagesRequested = (conversationId: string, numberOfMessages: number, lastMessageId: number) => ({
+export const messagesRequested = (conversationId: string, numberOfMessages: number, lastMessageId?: number | null) => ({
   type: 'MESSAGES_REQUESTED',
   payload: {
     conversationId,
@@ -26,7 +26,7 @@ export const messagesRequested = (conversationId: string, numberOfMessages: numb
   }
 });
 
-export const messagesLoaded = (conversationId: string, messages: any, hasMoreMessages: any, lastMessageId: number) => ({
+export const messagesLoaded = (conversationId: string, messages: any, hasMoreMessages: any, lastMessageId?: number | null) => ({
   type: 'MESSAGES_LOADED',
   payload: {
     conversationId,

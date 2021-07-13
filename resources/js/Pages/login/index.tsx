@@ -10,7 +10,6 @@ interface ILoginData {
 
 interface IProps {
   auth: IAuthState
-
   login(data: ILoginData): void
 }
 
