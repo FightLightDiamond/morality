@@ -23,7 +23,6 @@ const HomePage: React.FC<IProps> = ({auth, login}) => {
     login({email, password})
   }
 
-
   return (
     <Layout title={"Login"}>
       <div>
