@@ -1,4 +1,4 @@
-import {createStore, combineReducers, applyMiddleware} from 'redux'
+import {createStore, combineReducers, applyMiddleware, compose} from 'redux'
 import {notesReducer} from "./redux/notesReducer"
 // import { Action, Dispatch, Store } from "redux"
 import {IAction} from "./actions";
@@ -21,7 +21,8 @@ const persistConfig = {
   stateReconciler: autoMergeLevel2 // Xem thêm tại mục "Quá trình merge".
 };
 
-
+import conversationState from '../chat/store/reducers/conversations';
+import messagesState from '../chat/store/reducers/messages';
 // const pReducer = persistReducer(persistConfig, counterSlice);
 /**
  * Phân biệt các reducer
@@ -29,8 +30,9 @@ const persistConfig = {
 const rootReducer = combineReducers({
   notes: persistReducer(persistConfig, notesReducer),
   counter: counterReducer,
-  // auth: authReducer,
-  auth: persistReducer(persistConfig, authReducer),
+  auth: authReducer,
+  conversationState: persistReducer(persistConfig, conversationState),
+  messagesState: persistReducer(persistConfig, messagesState),
 })
 
 /**
@@ -77,9 +79,25 @@ const myMiddleware = (store: any) => (next: any) => (action: IAction) => {
 
 const logger = createLogger();
 
+import createSagaMiddleware from 'redux-saga';
+
+const sagaMiddleware = createSagaMiddleware();
+
+const composeEnhancers =
+  typeof window === 'object' &&
+  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+      // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
+    }) : compose;
+
+const enhancer = composeEnhancers(
+  applyMiddleware(sagaMiddleware)
+);
+
+
 const store = configureStore({
   reducer: rootReducer,
-  middleware: [thunk, myMiddleware]
+  middleware: [thunk, myMiddleware, enhancer]
 })
 
 export const persistor = persistStore(store)
