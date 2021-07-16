@@ -4,9 +4,10 @@ import NewNoteInput from "./new-note-input"
 import {connect, useSelector, useDispatch} from "react-redux"
 import {INode} from "../../stores/redux/notesReducer"
 import {addNote, setNotes, fetchNotes} from "../../stores/actions"
-import {decrement, increment} from '../../stores/counter/counterSlice'
+import { decrement, increment, selectCount } from "../../stores/counter/counterSlice"
 
 import {RootState} from '../../stores/store'
+import { useAppSelector } from "../../stores/hooks"
 
 interface Props {
   count: number
@@ -63,7 +64,7 @@ const NotePage: React.FC<Props> = (
           >
             Increment
           </button>
-          <span>{count}</span>
+          <span>{useAppSelector(selectCount)}</span>
           <button
             aria-label="Decrement value"
             onClick={decrement}

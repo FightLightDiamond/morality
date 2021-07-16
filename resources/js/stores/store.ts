@@ -1,4 +1,4 @@
-import {createStore, combineReducers, applyMiddleware, compose} from 'redux'
+import {combineReducers, applyMiddleware, compose} from 'redux'
 import {notesReducer} from "./redux/notesReducer"
 // import { Action, Dispatch, Store } from "redux"
 import {IAction} from "./actions";
@@ -58,8 +58,6 @@ const myMiddleware = (store: any) => (next: any) => (action: IAction) => {
   return next(action);
 }
 
-
-
 /**
  * Redux thunk thay thế cho async middleware
  */
@@ -83,25 +81,50 @@ import createSagaMiddleware from 'redux-saga';
 
 const sagaMiddleware = createSagaMiddleware();
 
-const composeEnhancers =
-  typeof window === 'object' &&
-  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
-    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
-      // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
-    }) : compose;
-
-const enhancer = composeEnhancers(
-  applyMiddleware(sagaMiddleware)
-);
+// const composeEnhancers = compose;
+//
+// const enhancer: any = composeEnhancers(
+//   applyMiddleware(sagaMiddleware)
+// );
 
 
 const store = configureStore({
   reducer: rootReducer,
-  middleware: [thunk, myMiddleware, enhancer]
+  middleware: [thunk, myMiddleware, sagaMiddleware]
 })
 
 export const persistor = persistStore(store)
-
 export type RootState = ReturnType<typeof store.getState>
-
+export type AppDispatch = typeof store.dispatch
 export default store
+
+
+
+/**
+ * takeEvery: mỗi khi reduces gửi action thi fetch
+ * put: dispatch action put {type, action} <=> dispatch(type, action)
+ *
+ * Effect: JS Object: để middleware cần phải làm gì, báo reducer thực thi action call(function, 'arg1'). Gọi action, gọi APi
+ *
+ * Task: process chạy dưới {fork} khi nào chạy xong nó sẽ báo, dùng để call API
+ *
+ * Blocking:
+ *  - yield: take đợi đến khi nào dispatch 1 action
+ *
+ * Non-blocking:
+ * - yield: fork(worker, action.payload) : không đợi
+ *
+ * Watcher: theo doi function* watcher() : take fork()
+ * Worker: function* worker(payload) :
+ *
+ * Middleware.run
+ * takeLatest: Mỗi lần có 1 action được dispatch lên redux store sẽ chạy mySaga, nhảy vào yield lấy thằng cuối cùng, sẽ cancel những cái trùng lặp
+ * yield call api
+ * try yield put
+ * catch yield put
+ *
+ * interface: Có thể khai báo để thêm
+ * type: không thể khai báo để thêm thuộc tính sẽ bị duplicate
+ * interface có thể extends để thêm thuộc tính mới
+ *
+ * */
