@@ -1,8 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { RootState } from "../store"
 
-
-
 export interface CounterState {
   value: number
   status: 'loading' | 'success' | 'fail'
@@ -21,18 +19,18 @@ export const counterSlice = createSlice({
      *
      * @param state
      */
-    increment: (state) => {
+    increment: (state, action: PayloadAction<number>) => {
       // Redux Toolkit allows us to write "mutating" logic in reducers. It
       // doesn't actually mutate the state because it uses the Immer library,
       // which detects changes to a "draft state" and produces a brand new
       // immutable state based off those changes
-      state.value += 1
+      state.value += action.payload
     },
     /**
      *
      * @param state
      */
-    decrement: (state) => {
+    decrement: (state, action: PayloadAction<number>) => {
       state.value -= 1
     },
     /**

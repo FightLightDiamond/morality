@@ -4,7 +4,16 @@ import {IAction} from "./actions";
 import { configureStore } from '@reduxjs/toolkit'
 import counterReducer from './counter/counterSlice'
 import authReducer from './auth/authSlice'
-import { persistStore, persistReducer } from 'redux-persist';
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from 'redux-persist'
 import storage from 'redux-persist/lib/storage';
 import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 import { pokemonApi } from '../services/pokemonService'
@@ -14,7 +23,8 @@ import { setupListeners } from '@reduxjs/toolkit/query'
 import conversationState from '../chat/store/reducers/conversations';
 import messagesState from '../chat/store/reducers/messages';
 import createSagaMiddleware from 'redux-saga';
-
+import logger from 'redux-logger'
+import rootSage from "./rootSaga"
 /**
  * Config cache
  */
@@ -48,9 +58,6 @@ const myMiddleware = (store: any) => (next: any) => (action: IAction) => {
     action.payload = '****'
   }
 
-  if(action.type === 'FETCH_NOTES') {
-
-  }
   /**
    * Store của bạn thực hiện
    */
@@ -67,18 +74,34 @@ const myMiddleware = (store: any) => (next: any) => (action: IAction) => {
 const sagaMiddleware = createSagaMiddleware();
 
 /**
+ * Middleware option
+ */
+const middlewareOption = {
+  thunk: true,
+  immutableCheck: true,
+  serializableCheck: {
+    // Ignore these action types
+    ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+    // Ignore these field paths in all actions
+    ignoredActionPaths: [],
+    // Ignore these paths in the state
+    ignoredPaths: [],
+  },
+}
+
+/**
  * Configure store
  */
 const store = configureStore({
   reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware()
+    getDefaultMiddleware(middlewareOption)
       .concat(tagApi.middleware)
       .concat(authApi.middleware)
       .concat(pokemonApi.middleware)
       .concat(myMiddleware)
+      .concat(logger)
       .concat(sagaMiddleware),
-  // middleware: [thunk, myMiddleware, sagaMiddleware, ]
 })
 
 /**
@@ -86,6 +109,14 @@ const store = configureStore({
  */
 setupListeners(store.dispatch)
 
+/**
+ * Run Saga
+ */
+sagaMiddleware.run(rootSage)
+
+/**
+ * Export
+ */
 export const persistor = persistStore(store)
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch

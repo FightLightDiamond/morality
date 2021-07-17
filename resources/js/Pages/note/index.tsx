@@ -7,6 +7,7 @@ import { addNote } from "../../stores/actions"
 import { decrement, increment, selectCount } from "../../stores/counter/counterSlice"
 import { useAppSelector } from "../../stores/hooks"
 import { useGetTagsQuery } from "../../services/tagService"
+import { PayloadAction } from "@reduxjs/toolkit"
 
 
 interface Props {
@@ -19,9 +20,9 @@ interface Props {
 
   fetchNotes(): void
 
-  increment(): void
+  increment(number: number): void
 
-  decrement(): void
+  decrement(number: number): void
 }
 
 const NotePage: React.FC<Props> = (
@@ -56,14 +57,14 @@ const NotePage: React.FC<Props> = (
         <div>
           <button
             aria-label="Increment value"
-            onClick={increment}
+            onClick={() => increment(3)}
           >
             Increment
           </button>
           <span>{useAppSelector(selectCount)}</span>
           <button
             aria-label="Decrement value"
-            onClick={decrement}
+            onClick={() => decrement(3)}
           >
             Decrement
           </button>

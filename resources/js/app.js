@@ -12,30 +12,13 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-// require('./components/Example');
-
-
 require('./echo')
 
 import React from 'react'
 import {render} from 'react-dom'
-import {InertiaApp} from '@inertiajs/inertia-react'
 import {InertiaProgress} from '@inertiajs/progress'
 
 InertiaProgress.init()
-
-// import route from 'ziggy-js';
-// import { Ziggy } from './ziggy';
-//
-// route('home', undefined, undefined, Ziggy);
-
-// const app = document.getElementById('app')
-//
-// render(
-//     <InertiaApp initialPage={JSON.parse(app.dataset.page)}
-//                 resolveComponent={name => import(`./Pages/${name}`).then(module => module.default)}/>,
-//     app
-// )
 
 import { createInertiaApp } from '@inertiajs/inertia-react'
 import {Provider} from "react-redux"
