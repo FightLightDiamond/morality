@@ -1,29 +1,29 @@
-import {combineReducers, applyMiddleware, compose} from 'redux'
-import {notesReducer} from "./redux/notesReducer"
-// import { Action, Dispatch, Store } from "redux"
+import {combineReducers} from 'redux'
+import {notesReducer} from "./note/notesReducer"
 import {IAction} from "./actions";
-import thunk from "redux-thunk"
 import { configureStore } from '@reduxjs/toolkit'
-import {createLogger} from "redux-logger"
-
 import counterReducer from './counter/counterSlice'
 import authReducer from './auth/authSlice'
-
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-
 import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
+import { pokemonApi } from '../services/pokemonService'
+import { authApi } from '../services/authService'
+import { tagApi } from '../services/tagService'
+import { setupListeners } from '@reduxjs/toolkit/query'
+import conversationState from '../chat/store/reducers/conversations';
+import messagesState from '../chat/store/reducers/messages';
+import createSagaMiddleware from 'redux-saga';
 
-
+/**
+ * Config cache
+ */
 const persistConfig = {
   key: 'root',
   storage: storage,
   stateReconciler: autoMergeLevel2 // Xem thêm tại mục "Quá trình merge".
 };
 
-import conversationState from '../chat/store/reducers/conversations';
-import messagesState from '../chat/store/reducers/messages';
-// const pReducer = persistReducer(persistConfig, counterSlice);
 /**
  * Phân biệt các reducer
  */
@@ -33,6 +33,9 @@ const rootReducer = combineReducers({
   auth: authReducer,
   conversationState: persistReducer(persistConfig, conversationState),
   messagesState: persistReducer(persistConfig, messagesState),
+  [pokemonApi.reducerPath]: pokemonApi.reducer,
+  [authApi.reducerPath]: authApi.reducer,
+  [tagApi.reducerPath]: tagApi.reducer,
 })
 
 /**
@@ -59,46 +62,34 @@ const myMiddleware = (store: any) => (next: any) => (action: IAction) => {
 }
 
 /**
- * Redux thunk thay thế cho async middleware
+ * Create Saga
  */
-// const asyncMiddleware = (store: any) => (next: any) => (action: any) => {
-//   if(typeof action === 'function') {
-//     return action(next)
-//   }
-//
-//   return next(action)
-// }
-
-// export const store = createStore(notesReducer);
-// export const store = createStore(
-//   reducer,
-//   applyMiddleware(thunk, myMiddleware)
-// );
-
-const logger = createLogger();
-
-import createSagaMiddleware from 'redux-saga';
-
 const sagaMiddleware = createSagaMiddleware();
 
-// const composeEnhancers = compose;
-//
-// const enhancer: any = composeEnhancers(
-//   applyMiddleware(sagaMiddleware)
-// );
-
-
+/**
+ * Configure store
+ */
 const store = configureStore({
   reducer: rootReducer,
-  middleware: [thunk, myMiddleware, sagaMiddleware]
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware()
+      .concat(tagApi.middleware)
+      .concat(authApi.middleware)
+      .concat(pokemonApi.middleware)
+      .concat(myMiddleware)
+      .concat(sagaMiddleware),
+  // middleware: [thunk, myMiddleware, sagaMiddleware, ]
 })
+
+/**
+ * Setup API dispatch
+ */
+setupListeners(store.dispatch)
 
 export const persistor = persistStore(store)
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch
 export default store
-
-
 
 /**
  * takeEvery: mỗi khi reduces gửi action thi fetch

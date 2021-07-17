@@ -13,14 +13,7 @@ const initialState: any = {
   token: ""
 }
 
-interface IAction {
-  type: string
-  payload: {
-    token: string
-  }
-}
-
-export const auth = createSlice({
+export const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
@@ -30,20 +23,21 @@ export const auth = createSlice({
   }
 })
 
-interface ILoginData {
+export interface ILoginData {
   email: string
   password: string
   token_name: string
 }
 
-// Action creators are generated for each case reducer function
-export const { loginSuccess } = auth.actions
+// Extract the action creators object and the reducer
+const { actions, reducer } = authSlice
+// Extract and export each action creator by name
+export const { loginSuccess } = actions
+// Export the reducer, either as a default or named export
+export default reducer
 
 export const login = ({ email, password }: ILoginData) => async (dispatch: Dispatch) => {
   const token_name = "user"
   const res = await axios.post("/api/login", { email, password, token_name })
   dispatch(loginSuccess(res.data))
 }
-
-// reducer
-export default auth.reducer

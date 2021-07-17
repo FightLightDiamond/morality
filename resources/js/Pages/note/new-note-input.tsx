@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useEffect, useState } from "react"
-import { INode } from "../../stores/redux/notesReducer"
+import { INode } from "../../stores/note/notesReducer"
 
 interface Props {
   add(note: INode): void

@@ -1,4 +1,4 @@
-import { INode } from "./redux/notesReducer"
+import { INode } from "./note/notesReducer"
 import axios from "axios";
 export const ADD_NOTE = "ADD_NOTE"
 export const SET_NOTES = "SET_NOTES"
