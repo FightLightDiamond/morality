@@ -53,7 +53,7 @@ const rootReducer = combineReducers({
  * @param store
  */
 const myMiddleware = (store: any) => (next: any) => (action: IAction) => {
-  console.log('action', action)
+  // console.log('action', action)
   if(action.type === 'ADD_NOTE' && action.payload.name === 'fuck') {
     action.payload = '****'
   }
@@ -81,11 +81,11 @@ const middlewareOption = {
   immutableCheck: true,
   serializableCheck: {
     // Ignore these action types
-    ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+    ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER, "tagApi/executeQuery/fulfilled"],
     // Ignore these field paths in all actions
-    ignoredActionPaths: [],
+    ignoredActionPaths: ['*api*'],
     // Ignore these paths in the state
-    ignoredPaths: [],
+    ignoredPaths: ['*api*'],
   },
 }
 

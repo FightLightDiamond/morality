@@ -1,18 +1,18 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { RootState } from "../store"
 
 export interface CounterState {
   value: number
-  status: 'loading' | 'success' | 'fail'
+  status: "loading" | "success" | "idle"
 }
 
 const initialState: CounterState = {
   value: 0,
-  status: 'loading'
+  status: "loading"
 }
 
 export const counterSlice = createSlice({
-  name: 'counter',
+  name: "counter",
   initialState,
   reducers: {
     /**
@@ -41,15 +41,27 @@ export const counterSlice = createSlice({
     incrementByAmount: (state, action: PayloadAction<number>) => {
       state.value += action.payload
     },
+    incrementSaga: (state, action: PayloadAction<number>) => {
+      state.status = "loading"
+    },
+    incrementSagaSuccess: (state, action: PayloadAction<number>) => {
+      state.status = "idle"
+      state.value += action.payload
+    }
   },
   /**
    * Tự viết tên không theo chuẩn
    * @param builder
    */
   extraReducers: (builder) => {
-    builder.addCase('abnc', (state) => {
-      state.status = 'loading'
-    })
+    builder
+    // .addCase(incrementAsync.pending, (state) => {
+    //   state.status = "loading"
+    // })
+    // .addCase(incrementAsync.fulfilled, (state, action) => {
+    //   state.status = "idle"
+    //   state.value += action.payload
+    // })
   }
 })
 
