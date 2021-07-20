@@ -1,7 +1,7 @@
 import {combineReducers} from 'redux'
 import {notesReducer} from "./note/notesReducer"
 import {IAction} from "./actions";
-import { configureStore } from '@reduxjs/toolkit'
+import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit'
 import counterReducer from './counter/counterSlice'
 import authReducer from './auth/authSlice'
 import {
@@ -121,6 +121,13 @@ export const persistor = persistStore(store)
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch
 export default store
+
+export type AppThunk<ReturnType = void> = ThunkAction<
+  ReturnType,
+  RootState,
+  unknown,
+  Action<string>
+  >;
 
 /**
  * takeEvery: mỗi khi reduces gửi action thi fetch
