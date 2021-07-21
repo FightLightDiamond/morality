@@ -1,6 +1,7 @@
 import {put, takeLatest} from 'redux-saga/effects';
-
 import {messagesLoaded} from '../actions';
+import _ from 'lodash'
+
 
 const messageDetails = {
   '2': [
@@ -169,7 +170,16 @@ interface IPayload {
   lastMessageId: any
 }
 
-const messagesSaga = function* (action: any) {
+interface IMessagesAction {
+  type: string,
+  payload: {
+    conversationId: string,
+    numberOfMessages: any,
+    lastMessageId: any
+  }
+}
+
+const messagesSaga = function* (action: IMessagesAction) {
   const {conversationId, numberOfMessages, lastMessageId}: IPayload = action.payload;
   // @ts-ignore
   const messages = messageDetails[conversationId];

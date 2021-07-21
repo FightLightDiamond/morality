@@ -27,6 +27,7 @@ const ChatForm: React.FC<IProps> = ({selectedConversation, onMessageSubmitted}) 
     e.preventDefault();
 
     if (!isMessageEmpty(textMessage)) {
+      alert(textMessage)
       onMessageSubmitted(textMessage);
       setTextMessage('');
     }

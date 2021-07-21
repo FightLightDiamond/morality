@@ -12,6 +12,7 @@
     "devDependencies": {
         "@babel/preset-react": "^7.13.13",
         "@types/classnames": "^2.3.1",
+        "@types/lodash": "^4.14.171",
         "@types/normalizr": "^2.0.18",
         "@types/react-redux": "^7.1.18",
         "@types/react-select": "^4.0.17",

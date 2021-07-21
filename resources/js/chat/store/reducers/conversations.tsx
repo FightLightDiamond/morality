@@ -85,20 +85,24 @@ const conversationsReducer = (state: IState = initialState, action: IAction) => 
     }
     case 'NEW_MESSAGE_ADDED': {
       if (state.selectedConversation) {
+        const newConversation = {
+          imageUrl: '',
+          imageAlt: 'null',
+          messageText: action.textMessage,
+          createdAt: 'Apr 16',
+          isMyMessage: true
+        }
         const newState: any = {...state};
         newState.selectedConversation = {...newState.selectedConversation};
-
-        newState.selectedConversation.messages.unshift(
-          {
-            imageUrl: null,
-            imageAlt: null,
-            messageText: action.textMessage,
-            createdAt: 'Apr 16',
-            isMyMessage: true
-          },
-        )
-
-        return newState;
+        // newState.selectedConversation.messages = {newConversation,...newState.selectedConversation.messages};
+        newState.selectedConversation.messages = {newConversation,...newState.selectedConversation.messages};
+        console.log('newState.selectedConversation.messages', newState.selectedConversation.messages)
+        // console.log('newState', newState)
+        // newState.selectedConversation.messages.unshift(
+        //   newConversation
+        // )
+        state = newState
+        // return newState;
       }
 
       return state;
