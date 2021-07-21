@@ -47,24 +47,6 @@ const BookmarkAddPage: React.FC<Props> = () => {
     value: label,
   });
 
-  // const handleKeyDown = (event: SyntheticEvent<HTMLElement>) => {
-  //   const { inputValue, tags } = state;
-  //   if (!inputValue) return;
-  //   switch (event.key) {
-  //     case 'Enter':
-  //     case 'Tab':
-  //       console.group('Value Added');
-  //       console.log(tags);
-  //       console.groupEnd();
-  //       setState({
-  //         ...state,
-  //         inputValue: '',
-  //         tags: [...tags, createOption(inputValue)],
-  //       });
-  //       event.preventDefault();
-  //   }
-  // };
-
   return (
     <div>
       <p>Tag: {JSON.stringify(state.tags)}</p>

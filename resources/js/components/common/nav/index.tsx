@@ -61,7 +61,7 @@ const Menu = () => {
                 aria-labelledby="navbarDropdown"
               >
                 <InertiaLink
-                  method="post"
+                  method="POST"
                   href={route("logout")}
                   className="dropdown-item"
                 >

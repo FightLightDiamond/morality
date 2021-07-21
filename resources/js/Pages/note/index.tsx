@@ -4,10 +4,15 @@ import NewNoteInput from "./new-note-input"
 import { connect } from "react-redux"
 import { INode } from "../../stores/note/notesReducer"
 import { addNote } from "../../stores/actions"
-import { decrement, increment, selectCount } from "../../stores/counter/counterSlice"
+import {
+  decrement,
+  increment,
+  selectCount,
+  incrementAsync,
+  incrementSaga
+} from "../../stores/counter/counterSlice"
 import { useAppSelector } from "../../stores/hooks"
 import { useGetTagsQuery } from "../../services/tagService"
-import { PayloadAction } from "@reduxjs/toolkit"
 
 
 interface Props {
@@ -23,13 +28,19 @@ interface Props {
   increment(number: number): void
 
   decrement(number: number): void
+
+  incrementAsync(number: number): void
+
+  incrementSaga(number: number): void
 }
 
 const NotePage: React.FC<Props> = (
   {
     addNote,
     increment,
-    decrement
+    decrement,
+    incrementAsync,
+    incrementSaga
   }
 ) => {
   const { data, error, isLoading } = useGetTagsQuery("")
@@ -56,11 +67,24 @@ const NotePage: React.FC<Props> = (
       <div>
         <div>
           <button
+            aria-label="incrementAsync value"
+            onClick={() => incrementAsync(9)}
+          >incrementAsync
+          </button>
+
+          <button
+            aria-label="increment Saga value"
+            onClick={() => incrementSaga(2)}
+          >increment Saga
+          </button>
+
+          <button
             aria-label="Increment value"
             onClick={() => increment(3)}
           >
             Increment
           </button>
+
           <span>{useAppSelector(selectCount)}</span>
           <button
             aria-label="Decrement value"
@@ -92,7 +116,9 @@ const mapActionToProps = {
   // setNotes,
   // fetchNotes,
   increment,
-  decrement
+  decrement,
+  incrementSaga,
+  incrementAsync
 }
 
 export default connect(mapStateToProps, mapActionToProps)(NotePage)

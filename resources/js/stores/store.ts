@@ -53,7 +53,6 @@ const rootReducer = combineReducers({
  * @param store
  */
 const myMiddleware = (store: any) => (next: any) => (action: IAction) => {
-  // console.log('action', action)
   if(action.type === 'ADD_NOTE' && action.payload.name === 'fuck') {
     action.payload = '****'
   }
