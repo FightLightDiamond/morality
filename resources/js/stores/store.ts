@@ -25,6 +25,7 @@ import messagesState from '../chat/store/reducers/messages';
 import createSagaMiddleware from 'redux-saga';
 import logger from 'redux-logger'
 import rootSage from "./rootSaga"
+import { productApi } from "../services/productService"
 /**
  * Config cache
  */
@@ -46,6 +47,7 @@ const rootReducer = combineReducers({
   [pokemonApi.reducerPath]: pokemonApi.reducer,
   [authApi.reducerPath]: authApi.reducer,
   [tagApi.reducerPath]: tagApi.reducer,
+  [productApi.reducerPath]: productApi.reducer,
 })
 
 /**
@@ -80,7 +82,10 @@ const middlewareOption = {
   immutableCheck: true,
   serializableCheck: {
     // Ignore these action types
-    ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER, "tagApi/executeQuery/fulfilled"],
+    ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER,
+      "tagApi/executeQuery/fulfilled",
+      "productApi/executeQuery/fulfilled"
+    ],
     // Ignore these field paths in all actions
     ignoredActionPaths: ['*api*'],
     // Ignore these paths in the state

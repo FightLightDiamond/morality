@@ -24,7 +24,9 @@ import { createInertiaApp } from '@inertiajs/inertia-react'
 import {Provider} from "react-redux"
 import store, {persistor} from "./stores/store"
 import {PersistGate} from "redux-persist/integration/react"
+import {QueryClient, QueryClientProvider} from "react-query"
 
+const client = new QueryClient();
 
 createInertiaApp({
   id: 'app',
@@ -32,6 +34,9 @@ createInertiaApp({
   setup({ el, App, props }) {
     render(
       <Provider store={store}>
+        {/*<QueryClientProvider client={client}>*/}
+        {/*  */}
+        {/*</QueryClientProvider>*/}
         <PersistGate loading={null} persistor={persistor}>
           <App {...props} />
         </PersistGate>

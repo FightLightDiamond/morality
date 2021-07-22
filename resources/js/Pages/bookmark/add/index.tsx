@@ -26,7 +26,7 @@ const BookmarkAddPage: React.FC = () => {
   return (
     <Layout>
       <div className="row">
-        <div className="col-sm-8">
+        <div className="col-sm-12">
           {state.showLoader ? (
             <Loader />
           ) : (
