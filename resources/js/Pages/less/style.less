@@ -1,0 +1,73 @@
+@import "button";
+
+@theme-color: blue;
+@p-margin-size: 100px;
+@base-size: 20px;
+@base-color: green;
+@button-color: #ff123f;
+
+p {
+  font-size: @base-size;
+}
+
+html {
+  color: blue;
+  background: whitesmoke;
+}
+
+header {
+  color: @theme-color;
+}
+
+footer {
+  color: @theme-color;
+}
+
+p {
+  margin: @p-margin-size;
+}
+
+.fancy-border(@size: 1px, @color: black) {
+  border: @size dashed @color;
+}
+
+header {
+  .fancy-border(3px, green);
+}
+
+.fancies-border {
+  .fancy-border(2px, red);
+  background-color: #b0d4f1;
+  border-radius: 7px;
+}
+
+.p-style(@size) when (@size <= 20) {
+  font-size: @size;
+  color: red;
+}
+
+.p-style(@size) when (@size > 20) {
+  font-size: @size;
+  color: green;
+}
+
+p {
+  .p-style(26px)
+}
+
+/**
+Main
+ */
+main {
+  background-color: yellow;
+  p {
+    color: red;
+  }
+
+  article {
+    background-color: blue;
+    p {
+      color: yellow;
+    }
+  }
+}
