@@ -20,6 +20,9 @@ docker-restart:
 docker-connect:
 	docker-compose exec laravel.test bash
 
+docker-db-connect:
+	docker-compose exec mysql bash
+
 init-app:
 	cp .env.example .env
 	composer install

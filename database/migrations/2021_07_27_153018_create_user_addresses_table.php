@@ -16,7 +16,6 @@ class CreateUserAddressesTable extends Migration
         Schema::create('user_addresses', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->index();
-            $table->string('user_id', 300);
             $table->string('phone_number', 15);
 
 	        $table->foreign('user_id')->references('id')->on('users');

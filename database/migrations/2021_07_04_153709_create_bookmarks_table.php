@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class CreateBookmarksTable extends Migration
@@ -25,6 +26,9 @@ class CreateBookmarksTable extends Migration
             $table->boolean('is_active')->default(0);
             $table->unsignedTinyInteger('views')->default(0);
             $table->timestamps();
+
+//	        $table->index('title', '', '',);
+	        $table->index([DB::raw('title(6)')]);
         });
     }
 
