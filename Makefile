@@ -8,6 +8,9 @@ endif
 
 OS:=$(shell uname)
 
+docker-start-81:
+	APP_PORT=81 ./vendor/bin/sail up
+
 docker-start:
 	./vendor/bin/sail up
 
