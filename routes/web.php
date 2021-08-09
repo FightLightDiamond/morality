@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BookmarkController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Inerita\Inerita;
 /*
@@ -15,6 +16,19 @@ use Inerita\Inerita;
 */
 
 Route::get('/',  [App\Http\Controllers\HomeController::class, 'index'])->name('welcome');
+/**
+ * Stripe
+ */
+Route::get('/billing-portal', function (Request $request) {
+    return $request->user()->redirectToBillingPortal();
+});
+
+Route::get('/payment-method', function (Request $request) {
+    $user = \App\Models\User::query()->find(1);
+    return view('stripe.payment.update-payment-method', [
+        'intent' => $user->createSetupIntent()
+    ]);
+});
 
 Route::get('/app', function () {
     return view('app');
