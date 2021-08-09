@@ -40,5 +40,6 @@ Route::group(['middleware' => ['web', 'auth']], function () {
 Route::inertia('/auth', 'login/index')->name('auth');
 Route::inertia('/chats', 'chat/index')->name('chat');
 Route::inertia('/shops', 'shop/index')->name('shop');
+Route::inertia('/dnd', 'dnd/index')->name('dnd');
 
 //Route::middleware('web')->get('/test', [App\Http\Controllers\TestController::class, 'index'])->name('test');

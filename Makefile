@@ -72,8 +72,14 @@ build:
 watch:
 	npm run watch
 
+watch-poll:
+	npm run watch-poll
+
 docker-watch:
 	docker-compose exec laravel.test make watch
+
+docker-watch-poll:
+	docker-compose exec laravel.test make watch-poll
 
 autoload:
 	composer dump-autoload
