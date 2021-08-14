@@ -167,6 +167,8 @@ return [
 		 */
 		Prettus\Repository\Providers\RepositoryServiceProvider::class,
 		shweshi\OpenGraph\Providers\OpenGraphProvider::class,
+		Lauthz\LauthzServiceProvider::class,
+		Spatie\Permission\PermissionServiceProvider::class,
 		/*
 		 * Application Service Providers...
 		 */
@@ -228,7 +230,8 @@ return [
 		'URL' => Illuminate\Support\Facades\URL::class,
 		'Validator' => Illuminate\Support\Facades\Validator::class,
 		'View' => Illuminate\Support\Facades\View::class,
-		'OpenGraph' => shweshi\OpenGraph\Facades\OpenGraphFacade::class
+		'OpenGraph' => shweshi\OpenGraph\Facades\OpenGraphFacade::class,
+		'Enforcer' => Lauthz\Facades\Enforcer::class,
 	],
 
 ];

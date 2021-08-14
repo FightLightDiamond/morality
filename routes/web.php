@@ -57,3 +57,20 @@ Route::inertia('/shops', 'shop/index')->name('shop');
 Route::inertia('/dnd', 'dnd/index')->name('dnd');
 
 //Route::middleware('web')->get('/test', [App\Http\Controllers\TestController::class, 'index'])->name('test');
+
+Route::group(['middleware' => ['enforcer:articles,read']], function () {
+	Route::inertia('/enforcer', function () {
+		return 'enforcer';
+	})->name('enforcer');
+});
+
+// Authen
+Route::group(['middleware' => ['http_request']], function () {
+	Route::resource('photo', 'PhotoController');
+});
+
+Route::get('attribute-test', function () {
+	return \App\Models\User::query()
+		->ofAttribute('user_view')
+		->get();
+});

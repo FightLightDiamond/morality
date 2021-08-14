@@ -16,7 +16,8 @@ class DatabaseSeeder extends Seeder
 	    $this->call([
 		    UserSeeder::class,
 		    BookmarkSeeder::class,
-		    TagSeeder::class
+		    TagSeeder::class,
+		    AttributeAccessConfigDataSeeder::class,
 	    ]);
     }
 }
