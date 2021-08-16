@@ -69,5 +69,9 @@ class Kernel extends HttpKernel
 	    'enforcer' => \Lauthz\Middlewares\EnforcerMiddleware::class,
 	    // an HTTP Request Middleware
 	    'http_request' => \Lauthz\Middlewares\RequestMiddleware::class,
+
+	    'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
+	    'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
+	    'role_or_permission' => \Spatie\Permission\Middlewares\RoleOrPermissionMiddleware::class,
     ];
 }

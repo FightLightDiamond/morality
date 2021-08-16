@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Commands\MasterDataGenerateCommand;
 use App\Console\Commands\RockPaperScissorsCommand;
 use App\Console\Commands\SendPrivateMessageCommand;
 use App\Console\Commands\SendRoomMessageCommand;
@@ -22,6 +23,8 @@ class Kernel extends ConsoleKernel
 	    SendPublicMessageCommand::class,
 	    SendRoomMessageCommand::class,
 	    RockPaperScissorsCommand::class,
+
+	    MasterDataGenerateCommand::class,
     ];
 
     /**

@@ -9,6 +9,10 @@ use Illuminate\Support\Collection;
 
 class BookmarkService
 {
+	/**
+	 * @param string $url
+	 * @return mixed
+	 */
 	public function getBookmarkData(string $url)
 	{
 		$data = \OpenGraph::fetch($url, true);
@@ -20,6 +24,11 @@ class BookmarkService
 		return $data;
 	}
 
+	/**
+	 * @param string $name
+	 * @param array $data
+	 * @return mixed|string
+	 */
 	private function getPropertyData(string $name, array $data)
 	{
 		if (isset($data[$name])

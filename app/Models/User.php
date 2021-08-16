@@ -2,23 +2,22 @@
 
 namespace App\Models;
 
-//use Illuminate\Bus\Queueable;
 use App\AttributeBases\UserAccess;
 use App\Scopes\UserScope;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Cache;
 use Laravel\Cashier\Billable;
 use Laravel\Sanctum\HasApiTokens;
 use function Illuminate\Events\queueable;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
 	use HasApiTokens, HasFactory, Notifiable;
 	use Billable;
+	use HasRoles;
 
 //    use Queueable;
 
@@ -107,7 +106,18 @@ class User extends Authenticatable
 	 */
 	public function scopeOfAttribute($query, $action)
 	{
-		// execute reducer
+		// execute access
 		return UserAccess::execute($query, $action);
+	}
+
+	/**
+	 * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
+	 */
+	public function attributesAccess()
+	{
+		return AttributeAccessConfigData::query()
+			->where('entity_id', Auth::id())
+			->where('type', 'user')
+			->get();
 	}
 }

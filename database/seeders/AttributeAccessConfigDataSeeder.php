@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use App\Models\AttributeAccessConfigData;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class AttributeAccessConfigDataSeeder extends Seeder
 {
@@ -14,7 +16,21 @@ class AttributeAccessConfigDataSeeder extends Seeder
 	 */
 	public function run()
 	{
+		$roles = [
+
+		];
+
+		$permission = [
+
+		];
+
+
 		if(AttributeAccessConfigData::count() === 0) {
+			$role = Role::create(['name' => 'writer']);
+
+			$permission = Permission::create(['name' => 'edit articles']);
+			$permission->assignRole($role);
+
 			AttributeAccessConfigData::insert([
 				[
 					'action' => 'user_view',
