@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Permission;
 use App\Models\Role;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RoleController extends Controller
 {
@@ -35,7 +37,25 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    	$name = $request->name;
+    	$permissionNames = $request->permissions;
+
+    	DB::beginTransaction();
+
+		try {
+			$role = Role::create(compact('name'));
+
+			foreach ($permissionNames as $permissionName) {
+				Permission::findOrCreate($permissionName);
+			}
+
+			$role->givePermissionTo($permissionNames);
+			DB::commit();
+			return $role;
+		} catch (\Exception $exception) {
+			DB::rollBack();
+			return  $exception->getMessage();
+		}
     }
 
     /**
@@ -57,7 +77,7 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $role = Role::findById($id);
     }
 
     /**

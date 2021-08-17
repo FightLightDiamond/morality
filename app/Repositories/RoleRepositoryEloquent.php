@@ -25,8 +25,6 @@ class RoleRepositoryEloquent extends BaseRepository implements RoleRepository
         return Role::class;
     }
 
-    
-
     /**
      * Boot up the repository, pushing criteria
      */

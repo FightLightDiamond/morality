@@ -1,12 +1,13 @@
-import React, { ChangeEvent, useState } from "react"
+import React, { ChangeEvent, useEffect, useState } from "react"
 import Layout from "../../../components/common/layout"
 import { Inertia } from "@inertiajs/inertia"
 
 import { ActionMeta, OptionTypeBase, ValueType } from "react-select"
 import AsyncCreatableSelect from "react-select/async-creatable"
+import IRole from "../../../contracts/IRole"
 
 interface Props {
-
+  role: IRole
 }
 
 interface ISelectOption extends OptionTypeBase {
@@ -21,23 +22,33 @@ interface IState {
   permissions: ValueType<ISelectOption, true>
 }
 
-const CreateRolePage: React.FC<Props> = () => {
+const CreateRolePage: React.FC<Props> = ({role}) => {
   const [state, setState] = useState<IState>({
     name: '',
     permissions: defaultPermission
   })
+
+  useEffect(() => {
+    const roleTags = role.permissions.map(({ name: label }) => {
+      return { label, value: label }
+    })
+    setState({ ...state, name: role.name, permissions: roleTags })
+  }, [])
 
   const handleSave = (event: React.MouseEvent) => {
     event.preventDefault()
     const form = new FormData()
 
     form.append("name", state.name)
-    // form.append("id", role.id.toString())
     state.permissions.forEach((tag, key) => {
       form.append(`permissions[]`, tag.value)
     })
 
-    Inertia.post("/api/roles", form)
+    Inertia.put(`/api/roles/${role.id}`, form)
+  }
+
+  const handleName = (e:ChangeEvent<HTMLInputElement>) => {
+    setState({ ...state, name: e.target.value })
   }
 
   return (
@@ -46,16 +57,15 @@ const CreateRolePage: React.FC<Props> = () => {
         <div className={"col-md-12"}>
           <div className={"card"}>
             <div className={"card-header"}>
-              Create
+              Update
             </div>
             <div className={"card-body"}>
               <p>{state.name}</p>
               <p>{JSON.stringify(state)}</p>
               <div className="mb-3">
                 <p>Name:</p>
-                <input onChange={(e:ChangeEvent<HTMLInputElement>) => {
-                  setState({ ...state, name: e.target.value })
-                } } type="text" className={'form-control'}/>
+                <input value={state.name}
+                  onChange={handleName} type="text" className={'form-control'}/>
               </div>
               <div className="mb-3">
                 <div>
