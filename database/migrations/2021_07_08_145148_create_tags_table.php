@@ -26,7 +26,7 @@ class CreateTagsTable extends Migration
 
 //	    DB::statement('ALTER TABLE `tags` ADD INDEX `tags_count_index` (`count` DESC)');
 //	    DB::statement('ALTER TABLE `tags` ADD INDEX `tags_count_index` [VISIBLE | INVISIBLE]');
-	    DB::statement('ALTER TABLE `tags` ALTER INDEX `tags_count_desc_index` VISIBLE');
+//	    DB::statement('ALTER TABLE `tags` ALTER INDEX `tags_count_desc_index` VISIBLE');
 	    DB::statement('ALTER TABLE `tags` ADD FULLTEXT `tag_name_index`(name)');
 
 //	    $q = Input::get('query');

@@ -88,7 +88,7 @@ autoload:
 	composer dump-autoload
 
 cache:
-	php artisan cache:clear && php artisan view:clear
+	php artisan config:cache && php artisan view:clear
 
 docker-cache:
 	docker exec laravel.test make cache
