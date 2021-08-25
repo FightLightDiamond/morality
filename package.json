@@ -53,6 +53,7 @@
         "@types/react": "^17.0.13",
         "@types/ziggy-js": "^1.0.2",
         "classnames": "^2.3.1",
+        "formik": "^2.2.9",
         "laravel-echo": "^1.11.0",
         "normalizr": "^3.6.1",
         "react-beautiful-dnd": "^13.1.0",

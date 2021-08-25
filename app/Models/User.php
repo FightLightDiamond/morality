@@ -5,6 +5,7 @@ namespace App\Models;
 use App\AttributeBases\UserAccess;
 use App\Scopes\UserScope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
@@ -119,5 +120,16 @@ class User extends Authenticatable
 			->where('entity_id', Auth::id())
 			->where('type', 'user')
 			->get();
+	}
+
+	public function role()
+	{
+		return $this->belongsTo(Role::class);
+	}
+
+	public function videos(): HasMany
+	{
+		$this->hasMany(Video::class)
+			->orderByDesc('updated_at');
 	}
 }

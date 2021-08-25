@@ -28,7 +28,11 @@ Route::get('/tags-list', function () {
 	return Tag::query()->pluck('name');
 })->middleware('api');
 
-Route::apiResource('/roles', \App\Http\Controllers\RoleController::class);
+
+Route::middleware('auth:sanctum')->group(function () {
+	Route::apiResource('/roles', \App\Http\Controllers\RoleController::class);
+	Route::apiResource('/videos', \App\Http\Controllers\VideoController::class);
+});
 
 Route::get('/permission-list', function () {
 	return Permission::query()->get();

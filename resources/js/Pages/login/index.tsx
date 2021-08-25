@@ -47,6 +47,9 @@ const HomePage: React.FC<IProps> = ({auth, login}) => {
             </form>
           )
         }
+
+        {/*<LoginFrom/>*/}
+
       </div>
     </Layout>
   )

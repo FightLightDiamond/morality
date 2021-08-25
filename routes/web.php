@@ -68,9 +68,9 @@ Route::group(['middleware' => ['enforcer:articles,read']], function () {
 });
 
 // Authen
-Route::group(['middleware' => ['http_request']], function () {
-	Route::resource('photo', 'PhotoController');
-});
+//Route::group(['middleware' => ['http_request']], function () {
+//	Route::resource('photo', 'PhotoController');
+//});
 
 Route::get('attribute-test', function () {
 	return \App\Models\User::query()

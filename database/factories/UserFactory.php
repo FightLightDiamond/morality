@@ -44,4 +44,33 @@ class UserFactory extends Factory
             ];
         });
     }
+
+	/**
+	 * Indicate that the user is suspended.
+	 *
+	 * @return \Illuminate\Database\Eloquent\Factories\Factory
+	 */
+	public function suspended()
+	{
+		return $this->state(function (array $attributes) {
+			return [
+				'account_status' => 'suspended',
+			];
+		});
+	}
+
+	/**
+	 * Configure the model factory.
+	 *
+	 * @return $this
+	 */
+	public function configure()
+	{
+		return $this->afterMaking(function (User $user) {
+			//
+		})->afterCreating(function (User $user) {
+			//
+		});
+	}
+
 }
