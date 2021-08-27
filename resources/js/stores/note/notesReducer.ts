@@ -1,4 +1,4 @@
-import {IAction, ADD_NOTE, SET_NOTES} from "../actions"
+import {TAction, ADD_NOTE, SET_NOTES} from "../actions"
 
 export interface INode {
   id: number
@@ -13,7 +13,7 @@ const initialState: any = {
   items: [],
 }
 
-export const notesReducer = (state: INoteState = initialState, action: IAction) => {
+export const notesReducer = (state: INoteState = initialState, action: TAction) => {
   switch (action.type) {
     case ADD_NOTE: {
       return {

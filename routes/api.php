@@ -38,7 +38,7 @@ Route::get('/permission-list', function () {
 	return Permission::query()->get();
 })->middleware('api');
 
-Route::post('/login', [LoginController::class, 'authenticate']);
+Route::post('/login', [LoginController::class, 'authenticate'])->name('api.login');
 
 Route::middleware('auth:sanctum')
     ->get('/user', function (Request $request) {

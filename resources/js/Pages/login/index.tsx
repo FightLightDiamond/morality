@@ -1,7 +1,9 @@
 import React, {useState} from "react"
 import Layout from "../../components/common/layout"
 import {connect} from "react-redux";
-import {IAuthState, login} from "../../stores/auth/authSlice";
+import {login} from "../../stores/auth/authSlice";
+import IAuthState from "../../contracts/State/IAuthState"
+import LoginForm from "../../components/forms/login-form/index"
 
 interface ILoginData {
   email: string,
@@ -47,10 +49,8 @@ const HomePage: React.FC<IProps> = ({auth, login}) => {
             </form>
           )
         }
-
-        {/*<LoginFrom/>*/}
-
       </div>
+      <LoginForm login={login}/>
     </Layout>
   )
 }

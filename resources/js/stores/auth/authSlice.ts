@@ -1,16 +1,16 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import axios from "axios"
 import { Dispatch } from "redux"
-
-export interface IAuthState {
-  token?: string
-}
+import Cookies from "js-cookie"
+import ILoginData from "../../contracts/Data/ILoginData"
+import {TOKEN_STORAGE_KEY} from "../../const/key.const"
+import IAuthState from "../../contracts/State/IAuthState"
 
 /**
  * Thường sẽ là any
  */
 const initialState: any = {
-  token: ""
+  token: Cookies.get(TOKEN_STORAGE_KEY)
 }
 
 export const authSlice = createSlice({
@@ -18,16 +18,13 @@ export const authSlice = createSlice({
   initialState,
   reducers: {
     loginSuccess: (state: IAuthState, action: PayloadAction<any>) => {
-      state.token = action.payload.token
+      const {token} = action.payload
+
+      Cookies.set(TOKEN_STORAGE_KEY, token)
+      state.token = token
     }
   }
 })
-
-export interface ILoginData {
-  email: string
-  password: string
-  token_name: string
-}
 
 // Extract the action creators object and the reducer
 const { actions, reducer } = authSlice

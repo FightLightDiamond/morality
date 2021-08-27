@@ -1,6 +1,6 @@
 import {combineReducers} from 'redux'
 import {notesReducer} from "./note/notesReducer"
-import {IAction} from "./actions";
+import {TAction} from "./actions";
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit'
 import counterReducer from './counter/counterSlice'
 import authReducer from './auth/authSlice'
@@ -54,7 +54,7 @@ const rootReducer = combineReducers({
  * Middleware
  * @param store
  */
-const myMiddleware = (store: any) => (next: any) => (action: IAction) => {
+const myMiddleware = (store: any) => (next: any) => (action: TAction) => {
   if(action.type === 'ADD_NOTE' && action.payload.name === 'fuck') {
     action.payload = '****'
   }

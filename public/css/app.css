@@ -10002,3 +10002,7 @@ h3 {
     border-color: #dee2e6;
   }
 }
+.validation-error {
+  color: #e3342f;
+  font-size: small;
+}

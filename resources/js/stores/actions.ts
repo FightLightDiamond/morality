@@ -6,16 +6,16 @@ export const FETCH_NOTES = "FETCH_NOTES"
 import { Dispatch } from "redux"
 
 
-export type IAction = {
+export type TAction = {
   type: string
   payload: any
 }
 
-export const addNote = (note: INode): IAction => ({
+export const addNote = (note: INode): TAction => ({
   type: ADD_NOTE, payload: note
 })
 
-export const setNotes = (notes: Array<INode>): IAction => ({
+export const setNotes = (notes: Array<INode>): TAction => ({
   type: SET_NOTES, payload: notes
 })
 

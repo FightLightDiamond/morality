@@ -1,6 +1,6 @@
 // Need to use the React-specific entry point to import createApi
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
-import { ILoginData } from "../stores/auth/authSlice"
+import ILoginData from "../contracts/Data/ILoginData"
 
 
 // Define a service using a base URL and expected endpoints

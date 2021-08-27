@@ -17,7 +17,6 @@ class VideoListTest extends TestCase
 	public function testShowListOfVideos(): void
 	{
 		$user = User::factory()->create();
-
 		Video::factory()->count(5)->create();
 
 		$resp = $this
@@ -51,16 +50,35 @@ class VideoListTest extends TestCase
 		});
 	}
 
-	public function testShowOnlyPublishedNVideos(): void
+	public function providerTestNVideos()
 	{
-		Video::factory()->count(2)->unPublished()->create();
-		Video::factory()->count(5)->create();
+		return [
+			[5],
+			[1],
+			[1],
+		];
+	}
 
-		$resp = $this->json('GET', route('videos.index'));
-		$resp->assertJson(function (AssertableJson $assertableJson) {
+	/**
+	 * @param $total
+	 * @dataProvider providerTestNVideos
+	 */
+	public function testShowOnlyPublishedNVideos($total): void
+	{
+		dump($total);
+
+		Video::factory()->count(2)->unPublished()->create();
+		Video::factory()->count($total)->create();
+		$user = User::factory()->create();
+
+		$resp = $this
+			->actingAs($user)
+			->json('GET', route('videos.index'));
+		$resp
+			->assertJson(function (AssertableJson $assertableJson) use ($total) {
 			$assertableJson
-				->where('total', 5)
-				->has('data', 5)
+				->where('total', $total)
+				->has('data', $total)
 				->has('data.0', function ($video) {
 					$video->where('is_published', 1)
 						->etc();

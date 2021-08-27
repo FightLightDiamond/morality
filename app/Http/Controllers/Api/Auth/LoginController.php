@@ -14,33 +14,36 @@ use Illuminate\Support\Facades\Auth;
  */
 class LoginController extends Controller
 {
-    /**
-     * Handle an authentication attempt.
-     *
-     */
-    public function authenticate(Request $request): JsonResponse
-    {
-        $postData = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
-            'token_name' => ['required'],
-        ]);
+	/**
+	 * Handle an authentication attempt.
+	 *
+	 */
+	public function authenticate(Request $request): JsonResponse
+	{
+		$postData = $request->validate([
+			'email' => ['required', 'email'],
+			'password' => ['required'],
+			'token_name' => ['required'],
+		]);
 
-        $credentials = [
-            'email' => $postData['email'],
-            'password' => $postData['password'],
-        ];
+		$credentials = [
+			'email' => $postData['email'],
+			'password' => $postData['password'],
+		];
 
-        if (Auth::attempt($credentials)) {
-            $user = User::query()
-                ->where('email', $postData['email'])
-                ->first();
+		if (Auth::attempt($credentials)) {
+			$user = User::query()
+				->where('email', $postData['email'])
+				->first();
 
-            $token = $user->createToken($postData['token_name']);
+			$token = $user->createToken($postData['token_name']);
 
-            return response()->json(['token' => $token->plainTextToken]);
-        }
+			return response()->json([
+				'user' => $user,
+				'token' => $token->plainTextToken,
+			]);
+		}
 
-        return response()->json(['email' => 'The provided credentials do not match our records.'], 401);
-    }
+		return response()->json(['error' => __('auth.failed')], 401);
+	}
 }
