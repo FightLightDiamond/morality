@@ -56,6 +56,7 @@ Route::group(['middleware' => ['web', 'auth']], function () {
 Route::inertia('/auth', 'login/index')->name('auth');
 Route::inertia('/chats', 'chat/index')->name('chat');
 Route::inertia('/shops', 'shop/index')->name('shop');
+Route::inertia('/videos', 'video/index')->name('video');
 Route::inertia('/dnd', 'dnd/index')->name('dnd');
 Route::inertia('/roles', 'authorization/role/create')->name('role');
 
@@ -167,4 +168,9 @@ Route::group(['middleware' => ['permission:publish articles|edit articles']], fu
 
 Route::group(['middleware' => ['role_or_permission:super-admin|edit articles']], function () {
 	//
+});
+
+Route::get('mail', function () {
+	\Illuminate\Support\Facades\Mail::to(\App\Models\User::query()->first())
+		->send(new \App\Mail\VideoPublishedOwnerEmail(\App\Models\Video::query()->first()));
 });

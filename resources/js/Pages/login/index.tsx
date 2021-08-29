@@ -50,7 +50,7 @@ const HomePage: React.FC<IProps> = ({auth, login}) => {
           )
         }
       </div>
-      <LoginForm login={login}/>
+      <LoginForm/>
     </Layout>
   )
 }

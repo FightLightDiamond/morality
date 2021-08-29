@@ -69,6 +69,9 @@ test-js:
 test-php:
 	vendor/bin/phpcs --standard=phpcs.xml && vendor/bin/phpmd app text phpmd.xml
 
+test-sail:
+	./vendor/bin/sail test
+
 build:
 	npm run dev
 
@@ -96,9 +99,5 @@ docker-cache:
 route:
 	php artisan route:list
 
-generate-master:
-	php bin/generate_master.php $(lang)
-
-update-master:
-	php artisan master:update $(lang)
-	make cache
+sail-db:
+	./vendor/bin/sail mysql

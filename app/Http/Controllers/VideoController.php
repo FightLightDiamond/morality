@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Auth;
 
 class VideoController extends Controller
 {
+	/**
+	 * @var VideoService
+	 */
+	private VideoService $videoService;
+
 	public function __construct(VideoService $videoService)
 	{
 		$this->videoService = $videoService;

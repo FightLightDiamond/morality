@@ -17,8 +17,9 @@ import {
 import storage from 'redux-persist/lib/storage';
 import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 import { pokemonApi } from '../services/pokemonService'
-import { authApi } from '../services/authService'
+import { authApi } from '../services/auth.service'
 import { tagApi } from '../services/tagService'
+import { videoApi } from '../services/video.service'
 import { setupListeners } from '@reduxjs/toolkit/query'
 import conversationState from '../chat/store/reducers/conversations';
 import messagesState from '../chat/store/reducers/messages';
@@ -48,6 +49,7 @@ const rootReducer = combineReducers({
   [authApi.reducerPath]: authApi.reducer,
   [tagApi.reducerPath]: tagApi.reducer,
   [productApi.reducerPath]: productApi.reducer,
+  [videoApi.reducerPath]: videoApi.reducer,
 })
 
 /**
@@ -83,6 +85,10 @@ const middlewareOption = {
   serializableCheck: {
     // Ignore these action types
     ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER,
+      "authApi/executeQuery/fulfilled",
+      "authApi/executeMutation/fulfilled",
+      "videoApi/executeQuery/fulfilled",
+      "videoApi/executeMutation/fulfilled",
       "tagApi/executeQuery/fulfilled",
       "productApi/executeQuery/fulfilled"
     ],
@@ -103,6 +109,7 @@ const store = configureStore({
       .concat(tagApi.middleware)
       .concat(authApi.middleware)
       .concat(pokemonApi.middleware)
+      .concat(videoApi.middleware)
       .concat(myMiddleware)
       .concat(logger)
       .concat(sagaMiddleware),

@@ -5,7 +5,7 @@ import Cookies from "js-cookie"
 import ILoginData from "../../contracts/Data/ILoginData"
 import {TOKEN_STORAGE_KEY} from "../../const/key.const"
 import IAuthState from "../../contracts/State/IAuthState"
-
+import Route from "next/router"
 /**
  * Thường sẽ là any
  */
@@ -22,6 +22,8 @@ export const authSlice = createSlice({
 
       Cookies.set(TOKEN_STORAGE_KEY, token)
       state.token = token
+
+      Route.push('/videos')
     }
   }
 })
@@ -37,4 +39,8 @@ export const login = ({ email, password }: ILoginData) => async (dispatch: Dispa
   const token_name = "user"
   const res = await axios.post("/api/login", { email, password, token_name })
   dispatch(loginSuccess(res.data))
+}
+
+export const loginL = (data: any) => async (dispatch: Dispatch) => {
+  dispatch(loginSuccess(data))
 }

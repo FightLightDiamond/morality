@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\Admin\VideoAdminController;
 use App\Http\Controllers\Api\Auth\LoginController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\TagController;
+use App\Http\Controllers\VideoController;
 use App\Models\Permission;
 use App\Models\Tag;
 use Illuminate\Http\Request;
@@ -28,11 +31,11 @@ Route::get('/tags-list', function () {
 	return Tag::query()->pluck('name');
 })->middleware('api');
 
-
 Route::middleware('auth:sanctum')->group(function () {
-	Route::apiResource('/roles', \App\Http\Controllers\RoleController::class);
-	Route::apiResource('/videos', \App\Http\Controllers\VideoController::class);
+	Route::apiResource('/roles', RoleController::class);
 });
+
+Route::apiResource('/videos', VideoController::class);
 
 Route::get('/permission-list', function () {
 	return Permission::query()->get();
@@ -41,6 +44,18 @@ Route::get('/permission-list', function () {
 Route::post('/login', [LoginController::class, 'authenticate'])->name('api.login');
 
 Route::middleware('auth:sanctum')
-    ->get('/user', function (Request $request) {
-    return $request->user();
-});
+	->get('/user', function (Request $request) {
+		return $request->user();
+	});
+
+Route::name('admin.')
+	->prefix('admin')
+	->middleware(['role:admin'])
+	->group(function () {
+		Route::apiResource('videos', VideoAdminController::class);
+
+
+	});
+
+Route::put('videos-publish', [VideoAdminController::class, 'published'])->name('videos.published');
+Route::put('videos-un-publish', [VideoAdminController::class, 'unPublished'])->name('videos.unPublished');

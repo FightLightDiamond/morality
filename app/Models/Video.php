@@ -10,6 +10,9 @@ class Video extends Model
 {
     use HasFactory;
 
+    const PUBLISHED = 1;
+    const UNPUBLISHED = 0;
+
 	/**
 	 * @var array
 	 */
@@ -22,6 +25,11 @@ class Video extends Model
 
     public function scopePublished($query)
     {
-    	return $query->where('is_published', 1);
+    	return $query->where('is_published', static::PUBLISHED);
+    }
+
+    public function scopeUnPublished($query)
+    {
+    	return $query->where('is_published', static::UNPUBLISHED);
     }
 }

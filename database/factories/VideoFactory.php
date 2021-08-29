@@ -29,6 +29,9 @@ class VideoFactory extends Factory
         ];
     }
 
+	/**
+	 * @return Factory
+	 */
     public function unPublished(): Factory {
 		return $this->state(function (array $attribute) {
 			return [

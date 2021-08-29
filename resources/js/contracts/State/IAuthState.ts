@@ -1,3 +1,3 @@
 export default interface IAuthState {
-  token?: string
+  token?: string,
 }
