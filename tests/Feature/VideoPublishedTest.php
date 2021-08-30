@@ -21,7 +21,6 @@ class VideoPublishedTest extends TestCase
 
 	public function testPublish()
 	{
-		$user = User::factory()->create();
 		$video = Video::factory()->create();
 
 		$this->json('PUT', route('videos.published'), ['id' => $video->id])
@@ -46,7 +45,6 @@ class VideoPublishedTest extends TestCase
 		Mail::assertQueued(VideoPublishedOwnerEmail::class, function ($mail) use ($user) {
 			return $mail->hasTo($user);
 		});
-//		Mail::assertQueued(VideoPublishedOwnerEmail::class);
 	}
 
 	public function testNotificationPublish()
