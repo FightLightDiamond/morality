@@ -58,6 +58,7 @@ Route::inertia('/chats', 'chat/index')->name('chat');
 Route::inertia('/shops', 'shop/index')->name('shop');
 Route::inertia('/videos', 'video/index')->name('video');
 Route::inertia('/dnd', 'dnd/index')->name('dnd');
+Route::inertia('/duel', 'duel/index')->name('duel');
 Route::inertia('/roles', 'authorization/role/create')->name('role');
 
 //Route::middleware('web')->get('/test', [App\Http\Controllers\TestController::class, 'index'])->name('test');

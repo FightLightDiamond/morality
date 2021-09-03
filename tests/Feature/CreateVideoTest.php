@@ -5,35 +5,74 @@ namespace Tests\Feature;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Str;
 use Illuminate\Testing\Fluent\AssertableJson;
 use Tests\TestCase;
 
 class CreateVideoTest extends TestCase
 {
-	use RefreshDatabase, WithFaker;
+//	use RefreshDatabase;
+	use WithFaker;
 
+	/**
+	 * @var string
+	 */
 	private string $url;
+	/**
+	 * @var string
+	 */
+	private string $title;
+	/**
+	 * @var string
+	 */
+	private string $description;
 
 	public function setUp(): void
 	{
 		parent::setUp();
 		$this->url = 'https://www.youtube.com/watch?v=gS9gVMGVDaA&list=PLkZU2rKh1mT-A4iQqTl2tn-SRC--Yeknp&index=5';
+		$this->title = $this->faker->title;
+		$this->description = $this->faker->text;
 	}
 
-	public function testCreatesANewVideo(): void
+	public function dataVideos()
 	{
-//		$url = $this->faker->url;
+		$title = Str::random(3);
+		return [
+			[
+				'https://www.youtube.com/watch',
+				'$this->faker->title',
+				'$this->faker->text',
+			],
+			[
+				'https://www.youtube.com/watch',
+				$title,
+				$title,
+			],
+		];
+	}
+
+	/**
+	 * @dataProvider dataVideos
+	 * @param $url
+	 * @param $title
+	 * @param $description
+	 */
+	public function testCreateVideo($url, $title, $description): void
+	{
 		$user = User::factory()->create();
 
 		$this->actingAs($user)
 			->json('POST', route('videos.store'), [
-			'url' => $this->url,
-			'description' => 'test'
-		]);
+				'url' => $url,
+				'title' => $title,
+				'description' => $description
+			]);
 
 		$this->assertDatabaseHas('videos', [
-			'url' => $this->url,
-			'description' => 'test'
+			'url' => $url,
+			'title' => $title,
+			'description' => $description
 		]);
 	}
 
@@ -44,9 +83,10 @@ class CreateVideoTest extends TestCase
 
 		$resp = $this->actingAs($user)
 			->json('POST', route('videos.store'), [
-			'url' => $url,
-			'description' => 'test'
-		]);
+				'url' => $url,
+				'title' => $this->title,
+				'description' => $this->description
+			]);
 
 		$resp->dump();
 
@@ -66,7 +106,8 @@ class CreateVideoTest extends TestCase
 
 		$resp = $this->json('POST', route('videos.store'), [
 			'url' => $url,
-			'description' => 'test'
+			'title' => $this->title,
+			'description' => $this->description
 		]);
 
 		$this->assertDatabaseHas('videos', [
@@ -88,13 +129,14 @@ class CreateVideoTest extends TestCase
 
 		$resp = $this->json('POST', route('videos.store'), [
 			'url' => $url,
-			'description' => 'test'
+			'title' => $this->title,
+			'description' => $this->description
 		]);
 
 		$resp->assertJson(function (AssertableJson $json) use ($url) {
 			$json
 				->where('id', 1)
-				->where('description', 'test')
+				->where('description', $this->description)
 				->etc();
 		});
 	}
@@ -107,19 +149,20 @@ class CreateVideoTest extends TestCase
 		$resp = $this
 			->actingAs($user)
 			->json('POST', route('videos.store'), [
-			'url' => $url,
-			'description' => 'test'
-		]);
+				'url' => $url,
+				'title' => $this->title,
+				'description' => $this->description
+			]);
 
 		$resp->dump();
 
 		$resp
 			->assertStatus(422)
 			->assertJson(function (AssertableJson $json) use ($url) {
-			$json
-				->has('errors.url')
-				->etc();
-		});
+				$json
+					->has('errors.url')
+					->etc();
+			});
 	}
 
 	public function testAddsCurrentUserIdInVideo()
@@ -130,12 +173,14 @@ class CreateVideoTest extends TestCase
 		$this->actingAs($user)
 			->json('POST', route('videos.store'), [
 				'url' => $url,
-				'description' => 'test'
+				'title' => $this->title,
+				'description' => $this->description
 			]);
 
 		$this->assertDatabaseHas('videos', [
 			'url' => $url,
-			'description' => 'test',
+			'title' => $this->title,
+			'description' => $this->description,
 			'user_id' => $user->id
 		]);
 	}

@@ -3,7 +3,7 @@ import Layout from "../../components/common/layout"
 import { connect } from "react-redux"
 import { LinearProgress } from "@material-ui/core"
 import { useIndexQuery } from "../../services/video.service"
-
+import VideoCard from "../../components/video-card/index"
 const NotePage: React.FC<any> = (
   {}
 ) => {
@@ -22,16 +22,16 @@ const NotePage: React.FC<any> = (
 
   return (
     <Layout title={"Video"}>
-      {
-        data?.data.map(
-          (item: any) =>
-          <div className={'col-sm-3 pb-3'} key={item.id}>
-            <div className={'card shadow-sm'}>
-              <div className="card-body">{item.description}</div>
-            </div>
-          </div>
-        )
-      }
+      <div className={'row'}>
+        {
+          data?.data.map(
+            (item: any) =>
+              <div className={'col col-sm-3 pb-3'} key={item.id}>
+                <VideoCard video={item}/>
+              </div>
+          )
+        }
+      </div>
     </Layout>
   )
 }

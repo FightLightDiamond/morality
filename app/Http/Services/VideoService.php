@@ -31,6 +31,7 @@ class VideoService
 		$des = $data['description'] ?? '';
 		return Video::create([
 			'url' => $data['url'],
+			'title' => $data['title'],
 			'description' => $des,
 			'user_id' => $userId,
 		]);

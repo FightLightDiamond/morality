@@ -7,90 +7,61 @@ import {
   Draggable,
   DropResult,
   DroppableProvided,
-  DroppableStateSnapshot
+  DroppableStateSnapshot, DragStart
 } from "react-beautiful-dnd"
-import { v4 as uuid } from "uuid"
 import result from "postcss/lib/result"
 import { DragHandle } from "@material-ui/icons"
 
-interface IItem {
-  id: string
-  content: string
-}
 
 const itemsFromBackend = [
-  { id: uuid(), content: "First task" },
-  { id: uuid(), content: "Second task" },
-  { id: uuid(), content: "Third task" },
-  { id: uuid(), content: "Fourth task" },
-  { id: uuid(), content: "Fifth task" }
+  {
+    id: "first",
+    content: "Happier",
+    type: "demon",
+    img: "http://img.zing.vn/upload/yugi/source/Hero3Q/BaiDungHop/quai%20thu%20chimera.png"
+  },
+  {
+    id: "second",
+    content: "Lá chắn phản đòn",
+    type: "trap",
+    img: "http://img.zing.vn/upload/yugi/source/Hero3Q/BaiDungHop/tay%20kiem%20lua%20thieng.png"
+  },
+  {
+    id: "third",
+    content: "Phù thủy áo đen",
+    type: "demon",
+    img: "http://img.zing.vn/upload/yugi/source/Hero3Q/BaiDungHop/ky%20si%20bau%20troi.png"
+  },
+  {
+    id: "fourth",
+    content: "Hồi sinh",
+    type: "trap",
+    img: "http://img.zing.vn/upload/yugi/source/Hero3Q/BaiDungHop/ky%20si%20lua%20den.png"
+  },
+  {
+    id: "fifth",
+    content: "Tăng công",
+    type: "trap",
+    img: "http://img.zing.vn/upload/yugi/source/Hero3Q/BaiDungHop/paladin%20bong%20toi.png"
+  }
 ]
 
-interface IColumn {
-  name: string,
-  items: Array<IItem>
-}
-
 const columnsFromBackend = {
-  [uuid()]: {
+  ['begin']: {
     name: "Requested",
     items: itemsFromBackend
   },
-  [uuid()]: {
-    name: "To do",
+  ['demon']: {
+    name: "Demon",
     items: []
   },
-  [uuid()]: {
-    name: "In Progress",
+  ['trap']: {
+    name: "Trap",
     items: []
   },
-  [uuid()]: {
+  ['war']: {
     name: "Done",
     items: []
-  }
-}
-
-
-const onDragEnd = (result: any, columns: any, setColumns: any) => {
-  console.log("result", result)
-  if (!result.destination) return
-  const { source, destination } = result
-
-  if (source.droppableId !== destination.droppableId) {
-    console.log("Change")
-    const sourceColumn = columns[source.droppableId]
-    const destColumn = columns[destination.droppableId]
-    const sourceItems = [...sourceColumn.items]
-    const destItems = [...destColumn.items]
-    const [removed] = sourceItems.splice(source.index, 1)
-    console.log("removed", removed)
-    console.log("destination.index", destination.index)
-    console.log("source.index", source.index)
-    destItems.splice(destination.index, 0, removed)
-    setColumns({
-      ...columns,
-      [source.droppableId]: {
-        ...sourceColumn,
-        items: sourceItems
-      },
-      [destination.droppableId]: {
-        ...destColumn,
-        items: destItems
-      }
-    })
-  } else {
-    console.log("Sort")
-    const column = columns[source.droppableId]
-    const copiedItems = [...column.items]
-    const [removed] = copiedItems.splice(source.index, 1)
-    copiedItems.splice(destination.index, 0, removed)
-    setColumns({
-      ...columns,
-      [source.droppableId]: {
-        ...column,
-        items: copiedItems
-      }
-    })
   }
 }
 
@@ -132,22 +103,77 @@ const DNDPage: React.FC = () => {
 
     const srcI = source.index
     const desI = destination.index
-    const [a] = items;
-    console.log('a', a);
-    console.log('is', items.splice(srcI, 1));
 
     const [newOrder] = items.splice(srcI, 1)
-    //items.splice(srcI, 1)[0];
     items.splice(desI, 0, newOrder)
 
     setTodo(items)
   }
 
-  const onDE = (result: DropResult) => {
-    const { source, destination } = result
-    const srcI = source.index
-    // const desI = destination.index
 
+  const onDS = (result: any) => {
+    console.log('')
+    console.log('OnDS', result)
+  }
+
+  const onDragEnd = (result: any, columns: any, setColumns: any) => {
+    console.log("result", result)
+    if (!result.destination) return
+    const { draggableId, source, destination } = result
+
+    console.log("draggableId", draggableId)
+    console.log("source", source)
+    console.log("destination", destination)
+
+    /**
+     * Get sources
+     */
+    const sourceColumn = columns[source.droppableId]
+    const sourceItems = [...sourceColumn.items]
+    const [removed] = sourceItems.splice(source.index, 1)
+
+    console.log("removed", removed)
+    if(source.droppableId !== 'begin') {
+      alert("Not change")
+      return;
+    }
+
+    if (source.droppableId !== destination.droppableId) {
+      console.log("Change")
+
+      const destColumn = columns[destination.droppableId]
+      const destItems = [...destColumn.items]
+
+      console.log("destination.index", destination.index)
+      console.log("source.index", source.index)
+
+      destItems.splice(destination.index, 0, removed)
+
+      setColumns({
+        ...columns,
+        [source.droppableId]: {
+          ...sourceColumn,
+          items: sourceItems
+        },
+        [destination.droppableId]: {
+          ...destColumn,
+          items: destItems
+        }
+      })
+    } else {
+      console.log("Sort")
+      const column = columns[source.droppableId]
+      const copiedItems = [...column.items]
+      const [removed] = copiedItems.splice(source.index, 1)
+      copiedItems.splice(destination.index, 0, removed)
+      setColumns({
+        ...columns,
+        [source.droppableId]: {
+          ...column,
+          items: copiedItems
+        }
+      })
+    }
   }
 
   return (
@@ -316,19 +342,19 @@ const DNDPage: React.FC = () => {
               </div>
               <div className={"parties"}>
                 <div className={"item"}>
-                  <img className={"img-fluid"} src="https://sportzor.com/images/ygo_cardback_sleeves19.jpg" alt="" />
+                  <img className={"img-fluid"} src="https://upload.wikimedia.org/wikipedia/en/thumb/2/2b/Yugioh_Card_Back.jpg/250px-Yugioh_Card_Back.jpg" alt="" />
                 </div>
                 <div className={"item"}>
-                  <img className={"img-fluid"} src="https://sportzor.com/images/ygo_cardback_sleeves19.jpg" alt="" />
+                  <img className={"img-fluid"} src="https://upload.wikimedia.org/wikipedia/en/thumb/2/2b/Yugioh_Card_Back.jpg/250px-Yugioh_Card_Back.jpg" alt="" />
                 </div>
                 <div className={"item"}>
-                  <img className={"img-fluid"} src="https://sportzor.com/images/ygo_cardback_sleeves19.jpg" alt="" />
+                  <img className={"img-fluid"} src="https://upload.wikimedia.org/wikipedia/en/thumb/2/2b/Yugioh_Card_Back.jpg/250px-Yugioh_Card_Back.jpg" alt="" />
                 </div>
                 <div className={"item"}>
-                  <img className={"img-fluid"} src="https://sportzor.com/images/ygo_cardback_sleeves19.jpg" alt="" />
+                  <img className={"img-fluid"} src="https://upload.wikimedia.org/wikipedia/en/thumb/2/2b/Yugioh_Card_Back.jpg/250px-Yugioh_Card_Back.jpg" alt="" />
                 </div>
                 <div className={"item"}>
-                  <img className={"img-fluid"} src="https://sportzor.com/images/ygo_cardback_sleeves19.jpg" alt="" />
+                  <img className={"img-fluid"} src="https://upload.wikimedia.org/wikipedia/en/thumb/2/2b/Yugioh_Card_Back.jpg/250px-Yugioh_Card_Back.jpg" alt="" />
                 </div>
               </div>
             </div>
@@ -340,7 +366,9 @@ const DNDPage: React.FC = () => {
       </Wrapper>
 
       <div style={{ display: "flex", justifyContent: "space-between", height: "100%" }}>
-        <DragDropContext onDragEnd={(result: DropResult) => onDragEnd(result, columns, setColumns)}>
+        <DragDropContext
+          onDragStart={(result: DragStart) => onDS(result)}
+          onDragEnd={(result: DropResult) => onDragEnd(result, columns, setColumns)}>
           {
             Object.entries(columns).map(([id, column]) => {
               return (
@@ -359,7 +387,6 @@ const DNDPage: React.FC = () => {
                                  minHeight: 500
                                }}
                           >
-                            {/*{JSON.stringify(column)}*/}
                             {column.items.map((item: any, index: number) => {
                               return (
                                 <Draggable key={item.id} draggableId={item.id} index={index}>
@@ -378,7 +405,7 @@ const DNDPage: React.FC = () => {
                                                ...dragProvided.draggableProps.style
                                              }}
                                         >
-                                          {item.content}
+                                          <img className={"img-fluid"} src={item.img} alt={item.content} />
                                         </div>
                                       )
                                     }

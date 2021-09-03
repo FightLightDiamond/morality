@@ -56,6 +56,7 @@ class VideoController extends Controller
     {
         $postData = $this->validate($request, [
         	'url' => ['required', 'url', new YoutubeUrlRule],
+	        'title' => ['required'],
 	        'description' => ['sometimes']
         ]);
 

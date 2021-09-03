@@ -1,7 +1,6 @@
 import React, { useState } from "react"
 import Layout from "../../components/common/layout"
 import { connect } from "react-redux"
-import { useAppSelector } from "../../stores/hooks"
 import Drawer from "@material-ui/core/Drawer"
 import { LinearProgress } from "@material-ui/core"
 import Grid from "@material-ui/core/Grid"
@@ -14,10 +13,6 @@ import { useProductsQuery } from "../../services/productService"
 import { Wrapper, StyledButton } from "../../App.styles"
 import { TCartItem } from "../../types/TCartItem"
 import Cart from "./components/cart/cart"
-
-// interface Props {
-//
-// }
 
 const NotePage: React.FC<any> = (
   {}
