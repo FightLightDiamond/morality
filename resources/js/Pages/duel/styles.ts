@@ -9,6 +9,7 @@ export const Wrapper = styled.aside`
   }
   .parties {
     flex-direction: row;
+    flex-wrap: nowrap;
   }
   .item {
     flex-basis: 10%;

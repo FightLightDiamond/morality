@@ -18,7 +18,7 @@ const NotePage: React.FC<any> = (
   {}
 ) => {
   const { data, error, isLoading } = useProductsQuery("")
-  const [cartOpen, setCartOpen] = useState(false)
+  const [isCartOpen, setIsCartOpen] = useState(false)
   const [cartItems, setCartItems] = useState<TCartItem[]>([])
 
   const getTotalItems = (items: TCartItem[]) =>
@@ -47,9 +47,8 @@ const NotePage: React.FC<any> = (
         if (item.id === id) {
           if (item.amount === 1) return ack
           return [...ack, { ...item, amount: item.amount - 1 }]
-        } else {
-          return [...ack, item]
         }
+        return [...ack, item]
       }, [] as TCartItem[])
     )
   }
@@ -64,7 +63,7 @@ const NotePage: React.FC<any> = (
   return (
     <Layout title={"Shop"}>
       <Wrapper>
-        <Drawer anchor={"right"} open={cartOpen} onClose={() => setCartOpen(false)}>
+        <Drawer anchor={"right"} open={isCartOpen} onClose={() => setIsCartOpen(false)}>
           {/* Cart */}
           <Cart
             cartItems={cartItems}
@@ -73,7 +72,7 @@ const NotePage: React.FC<any> = (
           />
         </Drawer>
         {/* Add to cart */}
-        <StyledButton onClick={() => setCartOpen(true)}>
+        <StyledButton onClick={() => setIsCartOpen(true)}>
           <Badge badgeContent={getTotalItems(cartItems)} color={"error"}>
             <AddShoppingCartIcon />
           </Badge>

@@ -67,7 +67,55 @@ const itemsFromBackend = [
     content: "Tăng công",
     type: "trap",
     img: "http://img.zing.vn/upload/yugi/source/Hero3Q/BaiDungHop/paladin%20bong%20toi.png"
-  }
+  },
+  {
+    id: "first1",
+    content: "Happier",
+    type: "demon",
+    img: "http://img.zing.vn/upload/yugi/source/Hero3Q/BaiDungHop/quai%20thu%20chimera.png"
+  },
+  {
+    id: "second1",
+    content: "Lá chắn phản đòn",
+    type: "trap",
+    img: "http://img.zing.vn/upload/yugi/source/Hero3Q/BaiDungHop/tay%20kiem%20lua%20thieng.png"
+  },
+  {
+    id: "third1",
+    content: "Phù thủy áo đen",
+    type: "demon",
+    img: "http://img.zing.vn/upload/yugi/source/Hero3Q/BaiDungHop/ky%20si%20bau%20troi.png"
+  },
+  {
+    id: "fourth1",
+    content: "Hồi sinh",
+    type: "trap",
+    img: "http://img.zing.vn/upload/yugi/source/Hero3Q/BaiDungHop/ky%20si%20lua%20den.png"
+  },
+  {
+    id: "fifth1",
+    content: "Tăng công",
+    type: "trap",
+    img: "http://img.zing.vn/upload/yugi/source/Hero3Q/BaiDungHop/paladin%20bong%20toi.png"
+  },
+  {
+    id: "third12",
+    content: "Phù thủy áo đen",
+    type: "demon",
+    img: "http://img.zing.vn/upload/yugi/source/Hero3Q/BaiDungHop/ky%20si%20bau%20troi.png"
+  },
+  {
+    id: "fourth12",
+    content: "Hồi sinh",
+    type: "trap",
+    img: "http://img.zing.vn/upload/yugi/source/Hero3Q/BaiDungHop/ky%20si%20lua%20den.png"
+  },
+  {
+    id: "fifth12",
+    content: "Tăng công",
+    type: "trap",
+    img: "http://img.zing.vn/upload/yugi/source/Hero3Q/BaiDungHop/paladin%20bong%20toi.png"
+  },
 ]
 
 const columnsFromBackend = {

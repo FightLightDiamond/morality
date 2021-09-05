@@ -3,6 +3,7 @@
 use App\Http\Controllers\BookmarkController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\View;
 use Inerita\Inerita;
 
 /*
@@ -174,4 +175,22 @@ Route::group(['middleware' => ['role_or_permission:super-admin|edit articles']],
 Route::get('mail', function () {
 	\Illuminate\Support\Facades\Mail::to(\App\Models\User::query()->first())
 		->send(new \App\Mail\VideoPublishedOwnerEmail(\App\Models\Video::query()->first()));
+});
+
+
+Route::get('xpath', function () {
+	$html = file_get_contents('https://stackoverflow.com/questions/44687907/get-html-content-from-url-of-own-site/44687990');
+	// Create dom
+	$dom = new \DOMDocument('1.0', 'UTF-8');
+	libxml_use_internal_errors(true);
+	@$dom->loadHTML($html, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+	libxml_use_internal_errors(false);
+	// Dom Xpath
+	$domXpath = new \DOMXPath($dom);
+	$title = $domXpath->query("/html/head/title/text()");
+	$value = $domXpath->evaluate("/html/head/title");
+	// get value
+	$value->item(0);
+	// get data
+	$title->item(0)->data;
 });
