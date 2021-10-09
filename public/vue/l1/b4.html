@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lesson1</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body>
+<div id="app">
+  <div>
+    1 USD to VND: {{USDToVND}}
+  </div>
+</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: "#app",
+    data() {
+      return {
+        USDToVND: 23000
+      }
+    },
+    watch: {
+      USDToVND : function (newValue, oldValue) {
+        alert(`new value: ${newValue}, old value: ${oldValue}. Change value: ${newValue - oldValue}`);
+      }
+    },
+  })
+</script>
+</html>

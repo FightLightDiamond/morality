@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lesson1</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <style>
+      .redText {
+          color: red;
+      }
+
+      .blueText {
+          color: blue;
+      }
+
+      .yellowBackground {
+          background: yellow;
+      }
+  </style>
+</head>
+<body>
+<div id="app">
+  <div>
+    {{message | hi | capitalize}}
+  </div>
+  <div v-html="html"></div>
+  <a :class="attributeClass" :href="url">
+    Attribute
+  </a>
+
+  <p :style="styleCss">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium asperiores, beatae cum debitis dolore ducimus enim et illo inventore ipsam libero magni, molestiae nam odio, quibusdam quisquam ratione saepe voluptatem.
+  </p>
+</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<script>
+
+  Vue.filter('capitalize', function (value) {
+    if (!value) return ''
+    value = value.toString()
+    return value.charAt(0).toUpperCase() + value.slice(1)
+  })
+
+  const app = new Vue({
+    el: "#app",
+    data() {
+      return {
+        message: "hello world",
+        html: "<p>HTML<h1>",
+        attributeClass: ["blueText", "yellowBackground"],
+        // attributeClass: "blueText",
+        url: "https://google.com",
+        styleCss: {
+          color: 'red',
+          borderBottom: '1px solid magenta',
+          paddingBottom: '10px',
+        }
+      }
+    },
+    filters: {
+      hi: function (value) {
+        return value.replace('hello', 'hi')
+      }
+    }
+  })
+
+  console.log(app)
+</script>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body>
+<div id="app" class="container">
+    <h1>Todo</h1>
+    <create-component @event-create-from-child="onCreate"></create-component>
+    <inactive-list-component :tasks="tasks" @event-active-from-child="updateTasks"></inactive-list-component>
+    <active-list-component :tasks="tasks" @event-remove-from-child="updateTasks"></active-list-component>
+    <div>
+        Total: {{total}}
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<script type="module">
+    import CreateComponent from "./components/create-component.js";
+    import InactiveListComponent from "./components/inactive-list-component.js";
+    import ActiveListComponent from "./components/active-list-component.js";
+    import makeUID from "./common/makeUID.js";
+
+    const app = new Vue({
+        el: "#app",
+        data() {
+            return {
+                tasks: [
+                    {id: makeUID(), title: 'Task1', active: 0},
+                    {id: makeUID(), title: 'Task2', active: 0},
+                    {id: makeUID(), title: 'Task3', active: 1}
+                ],
+            }
+        },
+        components: {
+            "create-component": CreateComponent,
+            "inactive-list-component": InactiveListComponent,
+            "active-list-component": ActiveListComponent,
+        },
+        computed: {
+            total: function () {
+                return this.tasks.length;
+            }
+        },
+        methods: {
+            onCreate(task) {
+                this.tasks = [...this.tasks, task]
+            },
+            updateTasks(tasks) {
+                this.tasks = tasks
+            },
+        },
+    });
+</script>
+</body>
+</html>

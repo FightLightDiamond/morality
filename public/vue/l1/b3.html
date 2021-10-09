@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lesson1</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body>
+<div id="app">
+  <div>
+    NumberA: {{numberA}}
+  </div>
+  <div>
+    NumberA: {{numberB}}
+  </div>
+  <div>
+    <p>Using JavaScript Expressions</p>
+    Sum in template: {{numberA + numberB}}
+  </div>
+  <div>
+    <h2>computed</h2>
+    <p>Cached</p>
+    <p>Sort code</p>
+    <p>Sum by computed: {{sumByComputed}}</p>
+    <p>Sum by computed: {{sumByComputed}}</p>
+  </div>
+  <div>
+    <h2>function</h2>
+    <p>NoCache</p>
+    <p>Sum by function: {{this.sumByMethod()}}</p>
+    <p>Sum by function: {{this.sumByMethod()}}</p>
+  </div>
+</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: "#app",
+    data() {
+      return {
+        numberA: 10,
+        numberB: 15,
+      }
+    },
+    computed: {
+      sumByComputed: function() {
+        alert('sumByComputed')
+        return this.numberA + this.numberB
+      },
+      convertToUpper: {
+        get : function () {
+          return this.name.toUpperCase();
+        },
+        set: function (name) {
+          this.name = name;
+        }
+      }
+    },
+    methods: {
+      sumByMethod: function() {
+        alert('sumByMethod')
+        return this.numberA + this.numberB
+      }
+    },
+  })
+
+  console.log(app)
+</script>
+</html>

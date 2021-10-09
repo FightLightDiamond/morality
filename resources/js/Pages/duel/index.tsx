@@ -116,6 +116,24 @@ const itemsFromBackend = [
     type: "trap",
     img: "http://img.zing.vn/upload/yugi/source/Hero3Q/BaiDungHop/paladin%20bong%20toi.png"
   },
+  {
+    id: "third121",
+    content: "Phù thủy áo đen",
+    type: "demon",
+    img: "http://img.zing.vn/upload/yugi/source/Hero3Q/BaiDungHop/ky%20si%20bau%20troi.png"
+  },
+  {
+    id: "fourth121",
+    content: "Hồi sinh",
+    type: "trap",
+    img: "http://img.zing.vn/upload/yugi/source/Hero3Q/BaiDungHop/ky%20si%20lua%20den.png"
+  },
+  {
+    id: "fifth121",
+    content: "Tăng công",
+    type: "trap",
+    img: "http://img.zing.vn/upload/yugi/source/Hero3Q/BaiDungHop/paladin%20bong%20toi.png"
+  },
 ]
 
 const columnsFromBackend = {
