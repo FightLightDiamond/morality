@@ -59,3 +59,16 @@ Route::name('admin.')
 
 Route::put('videos-publish', [VideoAdminController::class, 'published'])->name('videos.published');
 Route::put('videos-un-publish', [VideoAdminController::class, 'unPublished'])->name('videos.unPublished');
+
+Route::post('/order-webhook', function () {
+	logger()->info(\request()->url() . json_encode(\request()->all()));
+});
+Route::post('/document-webhook', function () {
+	logger()->info(\request()->url() . json_encode(\request()->all()));
+});
+Route::post('/ra-document-webhook', function () {
+	logger()->info(\request()->url() . json_encode(\request()->all()));
+});
+Route::post('/company-webhook', function () {
+	logger()->info(\request()->url() . json_encode(\request()->all()));
+});

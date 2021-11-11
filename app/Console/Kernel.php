@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Commands\BusinessSectorImportCommand;
 use App\Console\Commands\MasterDataGenerateCommand;
 use App\Console\Commands\RockPaperScissorsCommand;
 use App\Console\Commands\SendPrivateMessageCommand;
@@ -25,6 +26,7 @@ class Kernel extends ConsoleKernel
 	    RockPaperScissorsCommand::class,
 
 	    MasterDataGenerateCommand::class,
+	    BusinessSectorImportCommand::class
     ];
 
     /**

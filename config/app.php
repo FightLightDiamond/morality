@@ -178,6 +178,8 @@ return [
 		App\Providers\EventServiceProvider::class,
 		App\Providers\RouteServiceProvider::class,
 
+		Maatwebsite\Excel\ExcelServiceProvider::class,
+
 	],
 
 	/*
@@ -232,6 +234,7 @@ return [
 		'View' => Illuminate\Support\Facades\View::class,
 		'OpenGraph' => shweshi\OpenGraph\Facades\OpenGraphFacade::class,
 		'Enforcer' => Lauthz\Facades\Enforcer::class,
+		'Excel' => Maatwebsite\Excel\Facades\Excel::class,
 	],
 
 ];

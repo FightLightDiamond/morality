@@ -1,0 +1,896 @@
+Economic Sector,Business Sector,Industry Group,Activity
+Energy,Energy - Fossil Fuels,Coal,Coal (NEC)
+,,,Coal Mining Support
+,,,Coal Wholesale
+,,Oil & Gas,Integrated Oil & Gas
+,,,Oil & Gas Exploration and Production (NEC)
+,,,Oil Exploration & Production - Onshore
+,,,Oil Exploration & Production - Offshore
+,,,Natural Gas Exploration & Production - Onshore
+,,,Natural Gas Exploration & Production - Offshore
+,,,Unconventional Oil & Gas Production
+,,,Oil & Gas Refining and Marketing (NEC)
+,,,Petroleum Refining
+,,,Gasoline Stations
+,,,Petroleum Product Wholesale
+,,Oil & Gas Related Equipment and Services,Oil & Gas Drilling (NEC)
+,,,Oil Drilling - Onshore
+,,,Gas Drilling - Onshore
+,,,Oil Drilling - Offshore
+,,,Gas Drilling - Offshore
+,,,Unconventional Oil & Gas Drilling
+,,,Oil Related Services and Equipment (NEC)
+,,,Oil Related Services
+,,,Oil Related Equipment
+,,,Oil Related - Surveying & Mapping Services
+,,,Oil & Gas Transportation Services (NEC)
+,,,LNG Transportation & Storage
+,,,Natural Gas Pipeline Transportation
+,,,Oil Pipeline Transportation
+,,,Sea-Borne Tankers
+,,,Oil & Gas Storage
+,Renewable Energy,Renewable Energy,Renewable Energy Equipment & Services (NEC)
+,,,Wind Systems & Equipment
+,,,Stationary Fuel Cells
+,,,Photovoltaic Solar Systems & Equipment
+,,,Thermal Solar Systems & Equipment
+,,,Biomass Power Energy Equipment
+,,,Waste to Energy Systems & Equipment
+,,,Hydropower Equipment
+,,,Wave Power Energy Equipment
+,,,Renewable Energy Services
+,,,Geothermal Equipment
+,,,Renewable Fuels (NEC)
+,,,Biodiesel
+,,,Ethanol Fuels
+,,,Pyrolytic & Synthetic Fuels
+,,,Biomass & Biogas Fuels
+,,,Hydrogen Fuel
+,Uranium,Uranium,Uranium (NEC)
+,,,Uranium Mining
+,,,Uranium Processing
+Basic Materials,Chemicals,Chemicals,Commodity Chemicals (NEC)
+,,,Plastics
+,,,Paints & Coatings
+,,,Tanning & Softening Agents
+,,,Explosives
+,,,Industrial Gases
+,,,Commodity Chemicals Wholesale
+,,,Glass
+,,,Agricultural Chemicals (NEC)
+,,,Fertilizers
+,,,Pesticides
+,,,Organic Fertilizers
+,,,Agricultural Chemicals Wholesale
+,,,Specialty Chemicals (NEC)
+,,,Coloring Agents
+,,,Synthetic Fibers
+,,,Advanced Polymers
+,,,Industrial Biotechnology Chemicals
+,,,Specialty Chemicals Wholesale
+,,,Composites
+,,,Adhesive & Epoxy
+,,,Diversified Chemicals
+,Mineral Resources,Metals & Mining,Non-Gold Precious Metals & Minerals (NEC)
+,,,Silver Mining
+,,,Platinum Mining
+,,,Diamond Mining
+,,,Semiprecious Gem Stones
+,,,Pearl Cultivation
+,,,Rare Earth Minerals
+,,,Iron & Steel (NEC)
+,,,Iron Ore Mining
+,,,Coke Coal Mining
+,,,"Iron, Steel Mills & Foundries"
+,,,Metal Service Centers
+,,,Metallic Rolling & Drawing Products
+,,,Metal Merchant Wholesale
+,,,Aluminum (NEC)
+,,,Primary Aluminum Production
+,,,Secondary Smelting & Alloying of Aluminum
+,,,Aluminum Rolling
+,,,Aluminum Refining
+,,,Aluminum Wholesale
+,,,Bauxite Mining
+,,,Specialty Mining & Metals (NEC)
+,,,Lead Ore Mining
+,,,Copper Ore Mining
+,,,Nickel Ore Mining
+,,,Zinc Ore Mining
+,,,Nonferrous Metal Mining
+,,,Nonferrous Metal Processing
+,,,Specialty Mining & Metals Wholesale
+,,,Gold (NEC)
+,,,Gold Mining
+,,,Gold Refining
+,,,Mining Support Services & Equipment (NEC)
+,,,Geophysical Surveying & Mapping Services
+,,,Mining Support Services
+,,,Mining Machinery & Equipment Manufacturing
+,,,Diversified Mining
+,,Construction Materials,Construction Materials (NEC)
+,,,Construction Material Processing
+,,,Cement & Concrete Manufacturing
+,,,Tile & Paving Material Manufacturing
+,,,Rock Mining
+,,,Construction Material Wholesale
+,Applied Resources,Paper & Forest Products,Forest & Wood Products (NEC)
+,,,Timber Tract Operations
+,,,Forest Nurseries & Gathering of Forest Products
+,,,Logging & Sawmills
+,,,Forest Support & Services
+,,,Wood Products
+,,,Wood Product Wholesale
+,,,Paper Products (NEC)
+,,,Paper Mills & Products
+,,,Newsprint Mills
+,,,Pulp Mills
+,,,Paper Product Wholesale
+,,Containers & Packaging,Non-Paper Containers & Packaging (NEC)
+,,,Textile Containers & Packaging
+,,,Glass Containers & Packaging
+,,,Metal Containers & Packaging
+,,,Plastic Containers & Packaging
+,,,Wood Container & Packaging
+,,,Container & Packaging Material Wholesale
+,,,Paper Packaging (NEC)
+,,,Paper Packaging Wholesale
+Industrials,Industrial Goods,Aerospace & Defense,Aerospace & Defense (NEC)
+,,,Arms & Ammunitions Manufacturing
+,,,Commercial Aircraft Manufacturing
+,,,Military Aircraft Manufacturing
+,,,Aircraft Parts Manufacturing
+,,,Military Vehicles Manufacturing
+,,,Satellite Design & Manufacture
+,,,Spacecraft Manufacturing
+,,,Military Clothing & Accessories
+,,,Aircraft Equipment Wholesale
+,,,Aerospace & Defense Electronics
+,,,Drone Manufacturing
+,,"Machinery, Tools, Heavy Vehicles, Trains & Ships",Industrial Machinery & Equipment (NEC)
+,,,Industrial Components
+,,,Industrial Machinery
+,,,Ball & Roller Bearings
+,,,Testing & Measuring Equipment
+,,,Pump & Pumping Equipment
+,,,Air & Gas Compressors
+,,,Welding & Soldering Equipment
+,,,Industrial Process Furnace & Ovens
+,,,Fluid Power Cylinder & Actuators
+,,,Automatic Vending Machines
+,,,Industrial Moulds
+,,,Machine Tools
+,,,Industrial Valve Manufacturing
+,,,Industrial Machinery & Equipment Wholesale
+,,,Commercial Equipment
+,,,Heavy Machinery & Vehicles (NEC)
+,,,Construction Machinery
+,,,Heavy Trucks
+,,,Heavy Buses & Coaches
+,,,Locomotive Engines & Rolling Stock
+,,,Agricultural Machinery
+,,,Commercial Landscaping Equipment
+,,,Heavy Machinery & Vehicles Wholesale
+,,,Electrical Components & Equipment (NEC)
+,,,Batteries & Uninterruptable Power Supplies
+,,,Wires & Cables
+,,,Electrical Components
+,,,Lighting Equipment
+,,,"Heating, Ventilation & Air Conditioning Systems"
+,,,Electrical Insulators
+,,,Switchgear
+,,,Portable Motors & Generators
+,,,Electrical Measuring & Testing Instruments
+,,,Electric Equipment Wholesale
+,,,Heavy Electrical Equipment (NEC)
+,,,Electrical Transmission & Grid Equipment
+,,,Elevator & Conveying Equipment
+,,,Turbine Manufacturing
+,,,Heavy Motors & Generators
+,,,Industrial Electrical Switchgear
+,,,Nuclear Generators & Components
+,,,Shipbuilding (NEC)
+,,,Ship Parts Manufacturers
+,,,Ship Repairing & Maintenance
+,Industrial & Commercial Services,Construction & Engineering,Construction & Engineering (NEC)
+,,,Commercial Buildings
+,,,Highway & Bridge Construction
+,,,Railway Construction
+,,,Power & Communications Network Construction
+,,,Civil Engineers & Architects
+,,,Building Contractors
+,,,Industrial Plant Construction
+,,,Water & Sewage Construction
+,,,Land Division & Subdivision
+,,,Gas Infrastructure Construction
+,,,Electric Power Plant Construction
+,,,Nuclear Power Plant Construction
+,,,Telecommunication Construction
+,,Diversified Industrial Goods Wholesale,Diversified Industrial Goods Wholesale
+,,Professional & Commercial Services,Environmental Services & Equipment (NEC)
+,,,Purification & Treatment Equipment
+,,,"Waste Management, Disposal & Recycling Services"
+,,,Environmental Consultancy Services
+,,,Environmental R&D Services & Biotechnology
+,,,Carbon Capture & Storage
+,,,Commercial Printing Services (NEC)
+,,,Specialized Printing Services
+,,,Newspaper & Magazine Printing Services
+,,,Book Printing Services
+,,,Employment Services (NEC)
+,,,Human Resources Consulting Services
+,,,Outsourcing & Staffing Services
+,,,Executive Search Services
+,,,Online Job Portals
+,,,Business Support Services (NEC)
+,,,Corporate Accounting Services
+,,,Legal Services
+,,,Management Consulting Services
+,,,Security Services
+,,,Cleaning Services
+,,,Data Processing Services
+,,,Industrial Equipment Rental
+,,,Office Equipment & Supplies Rental
+,,,Pest Control Services
+,,,Maintenance & Repair Services
+,,,Industrial Design Services
+,,,Translation & Interpretation Services
+,,,Testing Laboratories
+,,,Call Center Services
+,,,Exhibition & Conference Services
+,,,Transaction & Payment Services
+,,,Business Support Supplies (NEC)
+,,,Office Furniture
+,,,Office Supplies
+,,,"Health, Safety & Fire Protection Equipment"
+,,,Office Supplies Wholesale
+,,,Professional Information Services (NEC)
+,,,Financial Information Providers
+,,,Compliance & Investor Communication
+,,,Rating Agencies
+,,,Trade & Business Publishing
+,,,Legal & Tax Information Providers
+,,,Education & Training Information Providers
+,,,Journals & Scholarly Research
+,,,News Agencies
+,,,Libraries & Archives
+,Transportation,Freight & Logistics Services,"Courier, Postal, Air Freight & Land-based Logistics (NEC)"
+,,,Freight Logistics
+,,,Air Freight
+,,,Courier Services
+,,,Integrated Logistics Operators
+,,,Marine Freight & Logistics (NEC)
+,,,Marine Logistics
+,,,Inland Water Freight
+,,,Deep Sea Freight
+,,,Ground Freight & Logistics (NEC)
+,,,Railway Freight Operators
+,,,Freight Trucking
+,,,Warehousing
+,,,Truck Rental
+,,Passenger Transportation Services,Airlines (NEC)
+,,,Regional Airlines
+,,,Charter & Private Air Services
+,,,Specialized Aviation Services
+,,,Inter-Modal Passenger Transportation
+,,,"Passenger Transportation, Ground & Sea (NEC)"
+,,,Commuting Services
+,,,Charter Bus Services
+,,,Rail Services
+,,,Marine Passenger Transportation
+,,,Commuter Ferry Operators
+,,,Taxis & Limousines
+,,,Passenger Car Rental
+,,Transport Infrastructure,Airport Operators & Services (NEC)
+,,,Airport Operators
+,,,Duty Free Shops
+,,,Airport Fueling Services
+,,,Airline Catering Services
+,,,Marine Port Services (NEC)
+,,,Port Warehousing Services
+,,,Port Operators
+,,,Marine Cargo Handling Services
+,,,Highways & Rail Tracks (NEC)
+,,,Highway Operators
+,,,Railway Operators
+,,,Parking Lot Operators
+Consumer Cyclicals,Automobiles & Auto Parts,Automobiles & Auto Parts,Auto & Truck Manufacturers (NEC)
+,,,Motorcycles & Scooters
+,,,Automobiles & Multi Utility Vehicles
+,,,Light Trucks
+,,,Electric (Alternative) Vehicles
+,,,Luxury Vehicles
+,,,Auto & Truck Wholesale
+,,,"Auto, Truck & Motorcycle Parts (NEC)"
+,,,Automotive Body Parts
+,,,Engine & Powertrain Systems
+,,,Automotive Batteries
+,,,Automotive Systems
+,,,Automotive Accessories
+,,,Motorcycle Parts & Accessories
+,,,Auto & Truck Parts Wholesale
+,,,Tires & Rubber Products (NEC)
+,,,Tire & Tube Manufacturers
+,,,Tire Retreading
+,,,Industrial Rubber Products
+,,,Rubber Plantations
+,,,Tires & Rubber Products Wholesale
+,Cyclical Consumer Products,Textiles & Apparel,Textiles & Leather Goods (NEC)
+,,,Synthetic Fabrics
+,,,Natural Fabrics
+,,,Organic & Ecologically Produced Fabric
+,,,Leather Goods
+,,,Fur Goods
+,,,Fabric Dyeing & Finishing
+,,,Yarn Goods
+,,,Cotton Farming
+,,,Textiles & Leather Goods Wholesale
+,,,Apparel & Accessories (NEC)
+,,,Men's Clothing
+,,,Women's Clothing
+,,,Children's & Infants' Clothing
+,,,Sportswear & Outdoors Clothing
+,,,Jeans
+,,,Knitwear
+,,,Lingerie
+,,,Hosiery & Socks
+,,,Industrial Clothing & Uniforms
+,,,Fair Trade & Ethical Clothing
+,,,Luxury Clothing
+,,,Theatrical Costumes
+,,,Animal & Pet Clothing
+,,,Luxury Accessories
+,,,Accessories
+,,,Jewelry
+,,,Watches
+,,,Handbags & Luggage
+,,,Fashion Eyewear
+,,,Apparel Wholesale
+,,,Footwear (NEC)
+,,,Men's Footwear
+,,,Women's Footwear
+,,,Children's & Infants' Footwear
+,,,Sports & Outdoor Footwear
+,,,Luxury Footwear
+,,,Functional Footwear
+,,,Footwear Wholesale
+,,Homebuilding & Construction Supplies,Homebuilding (NEC)
+,,,Residential Builders - Single Homes
+,,,Residential Builders - Multifamily Homes
+,,,Prefabricated Homes
+,,,Sustainable & Energy Efficient Home Builders
+,,,Retirement Home Builders
+,,,Residential Architectural & Interior Design Services
+,,,Construction Supplies & Fixtures (NEC)
+,,,Construction Supplies
+,,,Luxury Construction Supplies & Fixtures
+,,,Doors & Window Frames
+,,,Flooring & Interior Tile Manufacturers
+,,,Plumbing Fixtures & Fittings
+,,,Kitchen Cabinets
+,,,Bathroom Fixtures
+,,,Roofing Supplies
+,,,Lighting Fixtures
+,,,Construction Supplies & Fixtures Wholesale
+,,Household Goods,"Appliances, Tools & Housewares (NEC)"
+,,,Household Appliances
+,,,Tools & Housewares
+,,,Kitchen Appliances
+,,,Cutlery & Flatware
+,,,Appliance & Houseware Wholesale
+,,,Luxury Appliances
+,,,Home Furnishings (NEC)
+,,,Carpets & Curtains
+,,,Wallpaper
+,,,Luxury Furnishing
+,,,Antiques
+,,,Home Furnishings Wholesale
+,,,Furniture
+,,,Art & Craftwork
+,,Leisure Products,Toys & Children's Products (NEC)
+,,,Dolls & Stuffed Toys
+,,,"Games, Toys & Children's Vehicles"
+,,,Children's Safety Products
+,,,Children's Furniture
+,,,Children's Products & Accessories
+,,,Toys & Children's Products Wholesale
+,,,Recreational Products (NEC)
+,,,Sailing Yachts & Motorboats
+,,,Bicycle Manufacturing
+,,,Sporting & Outdoor Goods
+,,,Musical Instruments
+,,,Luxury Recreational Products
+,,,Leisure Products Wholesale
+,,,Electric Scooters & Bicycles
+,Cyclical Consumer Services,Hotels & Entertainment Services,"Hotels, Motels & Cruise Lines (NEC)"
+,,,Hotels & Motels
+,,,Cruise Lines
+,,,Luxury Hotels
+,,,Resort Operators
+,,,Bed & Breakfast
+,,,Self-Catering Accommodation
+,,,Campsite Operators
+,,,Restaurants & Bars (NEC)
+,,,"Pubs, Bars & Night Clubs"
+,,,Commercial Food Services
+,,,Quick Service Restaurants
+,,,Mobile Caterers
+,,,Banquet Halls & Catering
+,,,Cafés
+,,,Casinos & Gaming (NEC)
+,,,Gambling & Gaming Machine Manufacturers
+,,,Gaming Machine Operators
+,,,Casinos
+,,,Horse & Dog Race Tracks
+,,,Lottery Operators
+,,,Leisure & Recreation (NEC)
+,,,Movie Theaters & Movie Products
+,,,Theatres & Performing Arts
+,,,Museums & Historic Places
+,,,Travel Agents
+,,,Amusement Parks and Zoos
+,,,"Gyms, Fitness and Spa Centers"
+,,,Adventure Sports Facilities & Ski Resorts
+,,,Public Sport Facilities
+,,,Professional Sports Venues
+,,,Golf Courses
+,,,Hunting & Fishing
+,,,Marinas
+,,,Guided Tour Operators
+,,Media & Publishing,Advertising & Marketing (NEC)
+,,,Advertising Agency
+,,,Media Buying Agency
+,,,Signs & Advertising Specialty Producers
+,,,Outdoor Advertising
+,,,Direct Marketing
+,,,Sales Promotions & Events Management
+,,,Guerrilla & Sensory Marketing
+,,,Public Relations
+,,,Digital Media Agencies
+,,,Branding & Naming
+,,,Market Research
+,,,Marketing Consulting Services
+,,,Broadcasting (NEC)
+,,,Television Broadcasting
+,,,Radio Broadcasting
+,,,Cable Service Providers
+,,,Entertainment Production (NEC)
+,,,"Movie, TV Production & Distribution"
+,,,"Music, Music Video Production & Distribution"
+,,,Plays & Concert Production
+,,,Entertainment Production Equipment & Services
+,,,Copyright Management
+,,,Adult Entertainment Production & Broadcasting
+,,,Consumer Publishing (NEC)
+,,,Newspaper Publishing
+,,,Magazine Publishing
+,,,Book Publishing
+,,,Directory Publishing
+,,,Digital Publishing
+,,,Adult Publishing
+,,,"Books, Newspapers & Magazines Wholesale"
+,Retailers,Diversified Retail,Department Stores (NEC)
+,,,General Department Stores
+,,,Luxury Department Stores
+,,,Internet & Mail Order Department Stores
+,,,Discount Stores (NEC)
+,,,Internet & Mail Order Discount Stores
+,,,Discount Stores with Grocery
+,,,Discount Stores without Grocery
+,,,Discount Stores with Gasoline
+,,,Discount Stores without Gasoline
+,,Specialty Retailers,"Auto Vehicles, Parts & Service Retailers (NEC)"
+,,,New Car Dealers
+,,,Used Car Dealers
+,,,Motorcycle Dealers
+,,,Automotive Parts & Accessories Retailers
+,,,Tire Dealers
+,,,Luxury Car Dealers
+,,,Home Improvement Products & Services Retailers (NEC)
+,,,Paint & Wallpaper Retailers
+,,,Builder Merchants
+,,,Nursery & Garden Centers
+,,,Kitchen & Bathroom Retailers
+,,,Home Décor Retailers
+,,,Interior Design Services
+,,,Luxury Home Improvement Product Retailers
+,,,Home Furnishings Retailers (NEC)
+,,,Furniture Retailers
+,,,Floor Covering Retailers
+,,,Soft Furnishing Retailers
+,,,Luxury Furnishing Retailers
+,,,Antique Dealers
+,,,Art & Craftwork Retailers
+,,,Apparel & Accessories Retailers (NEC)
+,,,Footwear Retailers
+,,,Jewelry & Watch Retailers
+,,,Men's Apparel Retailers
+,,,Women's Apparel Retailers
+,,,Children's & Infants' Clothing Retailers
+,,,Teen Fashion Retailers
+,,,Handbags & Luggage Retailers
+,,,Luxury Apparel Retailers
+,,,Sports & Outdoors Retailers
+,,,Computer & Electronics Retailers (NEC)
+,,,Computer Hardware & Software Retailers
+,,,Consumer Electronics Retailers
+,,,Mobile Phone Retailers
+,,,Miscellaneous Specialty Retailers (NEC)
+,,,Luxury Beauty Supply Retailers
+,,,Personal Care Products Retailers
+,,,Optical Goods Stores
+,,,Health Food Stores
+,,,Musical Instrument Retailers
+,,,Hobby & Craft Product Retailers
+,,,Toys & Games Retailers
+,,,Book & Magazine Retailers
+,,,Florists
+,,,Office Supplies & Stationery Stores
+,,,"Gift, Novelty & Souvenir Stores"
+,,,Used Merchandise Stores
+,,,Sporting Goods Stores
+,,,Pet & Pet Supplies Retailers
+,,,Adult Products Retailers
+Consumer Non-Cyclicals,Food & Beverages,Beverages,Brewers (NEC)
+,,,Craft & Micro Brewers
+,,,Distillers & Wineries (NEC)
+,,,Wineries
+,,,Distilleries
+,,,Malt Producers
+,,,Non-Alcoholic Beverages (NEC)
+,,,Carbonated Soft Drinks
+,,,Fruit Drinks
+,,,Energy Drinks
+,,,Bottled Water & Ice
+,,Food & Tobacco,Fishing & Farming (NEC)
+,,,Grain (Crop) Production
+,,,Poultry Farming
+,,,Sheep & Specialty Livestock Farming
+,,,"Vegetable, Fruit & Nut Farming"
+,,,"Coffee, Tea & Cocoa Farming"
+,,,Sugarcane Farming
+,,,Commercial Nurseries
+,,,Commercial Fishing
+,,,Aquaculture
+,,,Fur Farming
+,,,Animal Breeding
+,,,Agriculture Support Services
+,,,Organic Farming
+,,,Animal Feed
+,,,Agricultural Consultancy Services
+,,,Fishing & Farming Wholesale
+,,,Agricultural Biotechnology
+,,,Hog & Pig Farming
+,,,Cattle Farming
+,,,Fair Trade & Ethical Fishing & Farming
+,,,Food Processing (NEC)
+,,,Flour Milling
+,,,Bread & Bakery Product Manufacturing
+,,,Breakfast Cereal Manufacturing
+,,,"Cookie, Cracker & Pasta Manufacturing"
+,,,Fruit & Vegetable Processing
+,,,Meat Processing
+,,,Halal Meat Processing
+,,,Seafood Product Preparation & Packaging
+,,,Dairy Products
+,,,"Starch, Vegetable Fat & Oil Manufacturing"
+,,,Coffee & Tea
+,,,Sugar & Artificial Sweeteners
+,,,Chocolate & Confectionery
+,,,Snack Food & Non-Chocolate Confectionary
+,,,Special Foods & Wellbeing Products
+,,,Food Ingredients
+,,,Baby Food
+,,,Ready-Made Meals
+,,,Frozen Food Manufacturing
+,,,Pet Food Manufacturing
+,,,Vegan & Vegetarian Food Manufacturing
+,,,Tobacco (NEC)
+,,,Tobacco Farming
+,,,Tobacco Stemming & Redrying
+,,,Cigars & Cigarette Manufacturing
+,,,Chewing Tobacco Products
+,Personal & Household Products & Services,Personal & Household Products & Services,Household Products (NEC)
+,,,Laundry Supplies
+,,,Cleaning Supplies
+,,,Air Fresheners
+,,,Pet & Plant Protection Agents
+,,,Auto Cleaning Products
+,,,Personal Products (NEC)
+,,,Cosmetics & Perfumes
+,,,Luxury Cosmetics
+,,,Sanitary Products
+,,,Hair Accessories
+,,,Birth Control Products
+,,,Halal Personal Products
+,,,Personal Services (NEC)
+,,,Consumer Goods Rental
+,,,Accounting & Tax Preparation
+,,,Personal Legal Services
+,,,Child Care & Family Services
+,,,Consumer Repair Services
+,,,Personal Care Services
+,,,Funeral Services
+,Food & Drug Retailing,Food & Drug Retailing,Drug Retailers (NEC)
+,,,Retail - Drugs with Grocery
+,,,Retail - Drugs without Grocery
+,,,Cannabis Product Retailers
+,,,Non-Cannabis Recreational Drug Retailers
+,,,Food Retail & Distribution (NEC)
+,,,Food Wholesale
+,,,Supermarkets & Convenience Stores
+,,,"Beer, Wine & Liquor Stores"
+,,,Vending Machine Providers
+,,,Tobacco Stores
+,,,Food Markets
+,Consumer Goods Conglomerates,Consumer Goods Conglomerates,Consumer Goods Conglomerates
+Financials,Banking & Investment Services,Banking Services,Banks (NEC)
+,,,Corporate Banks
+,,,Retail & Mortgage Banks
+,,,Money Center Banks
+,,,Private Banks
+,,,Islamic Banks
+,,,Consumer Lending (NEC)
+,,,Personal & Car Loans
+,,,Consumer Credit Cards Services
+,,,Consumer Leasing
+,,,Credit Unions
+,,,Microfinancing
+,,,Corporate Financial Services (NEC)
+,,,Commercial Loans
+,,,Import-Export Banks
+,,,International Trade Financing
+,,,Factoring
+,,,Commercial Leasing
+,,Investment Banking & Investment Services,Investment Banking & Brokerage Services (NEC)
+,,,Investment Banking
+,,,Brokerage Services
+,,,Inter-Dealer Broker
+,,,Islamic Investment Banking & Brokerage Services
+,,,Merchant Banks
+,,,Investment Management & Fund Operators (NEC)
+,,,Investment Management
+,,,Hedge Funds
+,,,Collective Investment Fund Operators
+,,,Wealth Management
+,,,Venture Capital
+,,,Private Equity
+,,,Islamic Investment Management & Fund Operators
+,,,Diversified Investment Services
+,,,Financial & Commodity Market Operators & Service Providers (NEC)
+,,,Securities & Commodity Exchanges
+,,,"Clearing, Settlement & Custodial Service"
+,Insurance,Insurance,Multiline Insurance & Brokers (NEC)
+,,,Islamic Insurance
+,,,Insurance Brokers
+,,,Property & Casualty Insurance (NEC)
+,,,Property Insurance
+,,,Insurance - Automobile
+,,,Travel Insurance
+,,,Casualty Insurance
+,,,Life & Health Insurance (NEC)
+,,,Life Insurance
+,,,Health Insurance
+,,,Reinsurance (NEC)
+,,,Life & Health Reinsurance
+,,,Property & Casualty Reinsurance
+,Collective Investments,Collective Investments,UK Investment Trusts
+,,,Mutual Funds (NEC)
+,,,Islamic Mutual Funds
+,,,Closed End Funds
+,,,Exchange-Traded Funds (NEC)
+,,,Islamic ETFs
+,,,Islamic Commodity ETFs
+,,,Pension Funds
+,,,Insurance Funds
+,Investment Holding Companies,Investment Holding Companies,Investment Holding Companies (NEC)
+,,,Shell Companies
+Healthcare,Healthcare Services & Equipment,Healthcare Equipment & Supplies,Advanced Medical Equipment & Technology (NEC)
+,,,Medical Diagnostic & Testing Equipment
+,,,Medical Monitoring Systems
+,,,Laser Equipment
+,,,Medical Imaging Systems
+,,,Medical Software & Technology Services
+,,,Advanced Medical Equipment Wholesale
+,,,"Medical Equipment, Supplies & Distribution (NEC)"
+,,,Medical Supplies
+,,,Medical Prosthetics
+,,,Medical Equipment
+,,,Medical Devices & Implants
+,,,Medical Equipment Wholesale
+,,,"Glasses, Spectacles & Contact Lenses"
+,,,Laboratory Diagnostic & Testing Substances
+,,,Veterinary Medical Equipment & Supplies
+,,,Drug Delivery Systems
+,,Healthcare Providers & Services,Healthcare Facilities & Services (NEC)
+,,,"Hospitals, Clinics & Primary Care Services"
+,,,Residential & Long-Term Care
+,,,Ambulance & Emergency Services
+,,,Doctor's Office
+,,,Medical & Diagnostic Laboratories
+,,,Veterinary Services
+,,,Telemedicine Services
+,,,Home Healthcare Services
+,,,Alternative Medicine Facilities
+,,,Medical Farming
+,,,Managed Healthcare (NEC)
+,,,HMO Medical Centers
+,Pharmaceuticals & Medical Research,Pharmaceuticals,Pharmaceuticals (NEC)
+,,,Proprietary & Advanced Pharmaceuticals
+,,,Biopharmaceuticals
+,,,In-Vivo Diagnostic & Testing Substances
+,,,Veterinary Drugs
+,,,Generic Pharmaceuticals
+,,,Alternative Medicine
+,,,Recreational Pharmaceuticals
+,,,Pharmaceuticals Wholesale
+,,Biotechnology & Medical Research,Biotechnology & Medical Research (NEC)
+,,,Bio Therapeutic Drugs
+,,,Bio Diagnostics & Testing
+,,,Bio Medical Devices
+Technology,Technology Equipment,Semiconductors & Semiconductor Equipment,Semiconductors (NEC)
+,,,Integrated Circuits
+,,,Memory Chips (RAM)
+,,,Processors
+,,,Semiconductor Wholesale
+,,,NFC & RFID Systems
+,,,Semiconductor Equipment & Testing (NEC)
+,,,Semiconductor Machinery Manufacturing
+,,,Semiconductor Testing Equipment & Service
+,,,Semiconductor Equipment Wholesale
+,,Communications & Networking,Communications & Networking (NEC)
+,,,Network Equipment
+,,,Security & Surveillance
+,,,Conferencing Tools & Systems
+,,,VOIP Equipment & Systems
+,,,Broadcasting Equipment
+,,,Satellite Communications Network
+,,,Fiber Optic Cable Manufacturing
+,,Electronic Equipment & Parts,Electronic Equipment & Parts (NEC)
+,,,Biometric Products
+,,,Advanced Electronic Equipment
+,,,Display Screens
+,,,Electronic Components
+,,,3D Printers
+,,Office Equipment,Office Equipment (NEC)
+,,,Commercial Document Management
+,,,Office Technology Equipment
+,,,Point of Sale Systems
+,,,Scientific & Precision Equipment
+,,,Office Equipment Wholesale
+,,"Computers, Phones & Household Electronics",Computer Hardware (NEC)
+,,,Scientific & Super Computers
+,,,Laptop & Desktop Computers
+,,,Tablet & Netbook Computers
+,,,Input Devices
+,,,Output Devices
+,,,Servers & Systems
+,,,Storage Devices
+,,,Computer Hardware Component Assembly
+,,,Consumer Document Management
+,,,Phones & Handheld Devices (NEC)
+,,,Phones & Smart Phones
+,,,Portable Satellite Navigation
+,,,Personal Music Players
+,,,Electronic Books
+,,,Mobile Device Component Assembly
+,,,Household Electronics (NEC)
+,,,Photographic Equipment
+,,,TV & Video
+,,,Home Audio
+,,,Consumer Electronic Wholesale
+,,Integrated Hardware & Software,Integrated Hardware & Software
+,Software & IT Services,Software & IT Services,IT Services & Consulting (NEC)
+,,,Computer Programming
+,,,Computer Training
+,,,Technology Consulting & Outsourcing Services
+,,,IT Testing Services
+,,,Cloud Computing Services
+,,,Machine Learning & Artificial Intelligence (AI) Services
+,,,Software (NEC)
+,,,System Software
+,,,Application Software
+,,,Enterprise Software
+,,,Mobile Application Software
+,,,Mobile System Software
+,,,Programming Software & Testing Tools
+,,,Server & Database Software
+,,,Security Software
+,,,Online Services (NEC)
+,,,Search Engines
+,,,Social Media & Networking
+,,,E-commerce & Auction Services
+,,,Content & Site Management Services
+,,,Internet Security & Transactions Services
+,,,Internet Gaming
+,Financial Technology (Fintech) & Infrastructure,Financial Technology (Fintech) & Infrastructure,Financial Technology (Fintech) (NEC)
+,,,Business to Business
+,,,Business to Consumer
+,,,Consumer to Consumer
+,,,Crowd Collaboration (NEC)
+,,,Crowdfinancing & Crowdfunding
+,,,Crowdsourcing Platforms
+,,,Blockchain & Cryptocurrency (NEC)
+,,,Cryptocurrency Trading Platforms (Exchanges)
+,,,Blockchain Technology (Software)
+,,,Cryptocurrency Hardware
+,,,Cryptocurrency Mining
+,,,Miscellaneous Fintech Infrastructure
+,Telecommunications Services,Telecommunications Services,Integrated Telecommunications Services (NEC)
+,,,Wired Telecommunications Carriers
+,,,Telecommunications Resellers
+,,,Internet Service Providers
+,,,Telecommunications Network Infrastructure
+,,,VOIP Services
+,,,Wireless Telecommunications Services (NEC)
+,,,Alternative Communications Services
+,,,Satellite Service Operators
+,,,Wi-Fi & Wi-Max Providers
+,,,Wireless Telecoms Service Providers
+Utilities,Utilities,Electric Utilities & IPPs,Electric Utilities (NEC)
+,,,Fossil Fuel Electric Utilities
+,,,Nuclear Utilities
+,,,Power Charging Stations
+,,,Alternative Electric Utilities
+,,,Hydroelectric & Tidal Utilities
+,,,Solar Electric Utilities
+,,,Wind Electric Utilities
+,,,Biomass & Waste to Energy Electric Utilities
+,,,Geothermal Electric Utilities
+,,,Independent Power Producers (NEC)
+,,,Fossil Fuel IPPs
+,,,Renewable IPPs
+,,,Nuclear IPPs
+,,Natural Gas Utilities,Natural Gas Utilities (NEC)
+,,,Natural Gas Distribution
+,,Water & Related Utilities,Water & Related Utilities (NEC)
+,,,Water Supply & Irrigation Systems
+,,,Sewage Treatment Facilities
+,,,Heating & Air-Conditioning Supply
+,,Multiline Utilities,Multiline Utilities
+Real Estate,Real Estate,Real Estate Operations,"Real Estate Rental, Development & Operations (NEC)"
+,,,Office Real Estate Rental & Development
+,,,Retail Real Estate Rental & Development
+,,,Industrial Real Estate Rental & Development
+,,,Residential Real Estate Rental & Development
+,,,Real Estate Services (NEC)
+,,,Office Real Estate Services
+,,,Retail Real Estate Services
+,,,Industrial Real Estate Services
+,,,Residential Real Estate Services
+,,Residential & Commercial REITs,Diversified REITs
+,,,Commercial REITs (NEC)
+,,,Office REITs
+,,,Retail REITs
+,,,Industrial REITs
+,,,Residential REITs
+,,,Specialized REITs (NEC)
+,,,Healthcare REITs
+,,,Hospitality REITs
+,,,Self-Storage REITs
+,,,Timber REITs
+,,,Mortgage REITs
+,,,Islamic REITs
+"Institutions, Associations & Organizations","Institutions, Associations & Organizations","Institutions, Associations & Organizations",Religious Organizations
+,,,Civic & Social Organizations
+,,,Environmental Organizations
+,,,Charity Organizations
+,,,Professional Organizations (NEC)
+,,,"Business, Professional & Labor Organizations"
+,,,Political Organizations
+,,,Non-Governmental Organizations (NGOs)
+Government Activity,Government Activity,Government Activity,Government & Government Finance (NEC)
+,,,Public Finance Activities
+,,,Legal & Safety Public Services (NEC)
+,,,"Police, Justice & Legal Counsel"
+,,,Fire
+,,,Government Administration Activities
+,,,National Security & International Affairs
+Academic & Educational Services,Academic & Educational Services,Miscellaneous Educational Service Providers,Miscellaneous Educational Service Providers
+,,"School, College & University","School, College & University (NEC)"
+,,,Nursery & Pre-Schools
+,,,Elementary & Primary Schools
+,,,Colleges & Secondary Schools
+,,,Universities
+,,,School Districts
+,,Professional & Business Education,Professional & Business Education
